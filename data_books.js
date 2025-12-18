@@ -2,7 +2,7 @@ const myBooks_ru = [
     {
         title: "Протокол Безопасности",
         genre: "Фэнтези / В работе",
-        desc: "Флагманский проект. Древний механизм сдерживания сломан. Эрик и Марк должны найти способ перезапустить его, пока реальность не рухнула. Готово 3 главы.",
+        desc: "Флагманский проект. Древний механизм сдерживания сломан. Эрик и Марк должны найти способ перезапустить его, пока реальность не рухнула. Готово 2 главы.",
         price: "W.I.P.",
         color: "bg-slate-800",
         tag: "Пишется",
@@ -32,7 +32,7 @@ const myBooks_en = [
     {
         title: "The Security Protocol",
         genre: "Fantasy / WIP",
-        desc: "Flagship project. The ancient containment mechanism is broken. Eric and Mark must find a way to reboot it before reality collapses. 3 chapters ready.",
+        desc: "Flagship project. The ancient containment mechanism is broken. Eric and Mark must find a way to reboot it before reality collapses. 2 chapters ready.",
         price: "W.I.P.",
         color: "bg-slate-800",
         tag: "Writing",
