@@ -1,3 +1,4 @@
+// === КОНТЕНТ: РУССКИЙ ===
 const hiddenPosts_ru = [
     {
         id: "chapter-1-raw",
@@ -136,7 +137,7 @@ const hiddenPosts_ru = [
         id: "chapter-3-constants",
         title: "Глава 3. Нарушение констант",
         tag: "Протокол Безопасности",
-        date: "19 Декабря 2025",
+        date: "16 Декабря 2025",
         image: "images/grok-ruins.jpg",
         desc: "Побег из зоны покрытия, тени в зеркале заднего вида и физика, которая вышла из чата.",
         content: `
@@ -180,8 +181,9 @@ const hiddenPosts_ru = [
     }
 ];
 
+// === КОНТЕНТ: АНГЛИЙСКИЙ ===
 const hiddenPosts_en = [
-        {
+    {
         id: "chapter-1-raw",
         title: "Chapter 1. Dissonance",
         tag: "The Security Protocol",
@@ -318,7 +320,7 @@ const hiddenPosts_en = [
         id: "chapter-3-constants",
         title: "Chapter 3. Violation of Constants",
         tag: "The Security Protocol",
-        date: "December 19, 2025",
+        date: "December 16, 2025",
         image: "images/grok-ruins.jpg",
         desc: "Escaping the coverage zone, shadows in the rearview mirror, and physics leaving the chat.",
         content: `
@@ -362,11 +364,12 @@ const hiddenPosts_en = [
     }
 ];
 
-// === УМНАЯ ФУНКЦИЯ ЗАГРУЗКИ ===
+// === УМНАЯ ФУНКЦИЯ ЗАГРУЗКИ (С ПОДДЕРЖКОЙ ВЫВОДА В UI) ===
 function getLanguage() {
     return localStorage.getItem('site_lang') || 'ru';
 }
 
+// Эмуляция базы данных и загрузка
 async function loadGoogleSheet(type) {
     // Имитация задержки сети
     await new Promise(resolve => setTimeout(resolve, 300));
@@ -382,3 +385,116 @@ async function loadGoogleSheet(type) {
 }
 
 function mapHomeData(rows) { return rows; }
+
+// === ЛОГИКА ОГРАНИЧЕНИЯ ДОСТУПА (PAYWALL) ===
+
+// Тексты для модального окна
+const modalTexts = {
+    ru: {
+        title: "ДОСТУП ОГРАНИЧЕН",
+        desc: "Обнаружен защищенный контент. Для расшифровки файлов «Протокола Безопасности» требуется авторизация наблюдателя.",
+        placeholder: "Введите email для идентификации...",
+        btn: "Получить доступ",
+        processing: "РАСШИФРОВКА..."
+    },
+    en: {
+        title: "ACCESS RESTRICTED",
+        desc: "Protected content detected. Observer authorization is required to decrypt the 'Security Protocol' files.",
+        placeholder: "Enter email for identification...",
+        btn: "Get Access",
+        processing: "DECRYPTING..."
+    }
+};
+
+// Функция-обработчик кнопки "Читать"
+async function handleHiddenAccess(renderCallback) {
+    // 1. Проверяем наличие "ключа" в браузере
+    const hasAccess = localStorage.getItem('hidden_access_granted');
+
+    if (hasAccess) {
+        // Если доступ уже есть, запускаем переданную функцию рендера (показа контента)
+        if (typeof renderCallback === 'function') {
+            renderCallback();
+        } else {
+            console.error("No render function provided to handleHiddenAccess");
+        }
+    } else {
+        // 2. Если доступа нет — показываем модальное окно
+        // Сохраняем callback, чтобы вызвать его после успешного ввода email
+        window.pendingRenderCallback = renderCallback;
+        showModal();
+    }
+}
+
+function showModal() {
+    const lang = getLanguage();
+    const texts = (lang === 'en') ? modalTexts.en : modalTexts.ru;
+
+    // Находим элементы (они должны быть в HTML)
+    const modal = document.getElementById('access-modal');
+    if (!modal) {
+        console.error("Modal #access-modal not found in HTML");
+        return;
+    }
+
+    document.getElementById('modal-title').innerText = texts.title;
+    document.getElementById('modal-desc').innerText = texts.desc;
+    document.getElementById('user-email').placeholder = texts.placeholder;
+    document.getElementById('btn-text').innerText = texts.btn;
+
+    // Показываем окно
+    modal.classList.remove('hidden');
+}
+
+function unlockContent() {
+    const emailInput = document.getElementById('user-email');
+    
+    // Простая валидация
+    if (!emailInput.value.includes('@')) {
+        emailInput.classList.add('border-red-500');
+        setTimeout(() => emailInput.classList.remove('border-red-500'), 1000);
+        return;
+    }
+
+    // Эффект "загрузки/взлома"
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    const spinner = document.getElementById('btn-spinner');
+    const lang = getLanguage();
+    
+    btnText.innerText = (lang === 'en') ? modalTexts.en.processing : modalTexts.ru.processing;
+    btnIcon.classList.add('hidden');
+    spinner.classList.remove('hidden');
+
+    // ЗАДЕРЖКА 3 СЕКУНДЫ (Психологический крючок)
+    setTimeout(() => {
+        // 1. Сохраняем доступ
+        localStorage.setItem('hidden_access_granted', 'true');
+        console.log(`New subscriber (Security Protocol): ${emailInput.value}`);
+
+        // 2. Скрываем модалку
+        document.getElementById('access-modal').classList.add('hidden');
+
+        // 3. Запускаем отложенную функцию рендера
+        if (typeof window.pendingRenderCallback === 'function') {
+            window.pendingRenderCallback();
+            window.pendingRenderCallback = null;
+        }
+
+        // Сброс кнопки
+        spinner.classList.add('hidden');
+        btnIcon.classList.remove('hidden');
+    }, 3000);
+}
+
+// Закрытие по клику на фон (опционально)
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('access-modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    }
+});
