@@ -1,51 +1,5 @@
 const hiddenPosts_ru = [
     {
-        id: "chapter-3-constants",
-        title: "Глава 3. Нарушение констант",
-        tag: "Протокол Безопасности",
-        date: "19 Декабря 2025",
-        image: "images/grok-ruins.jpg",
-        desc: "Побег из зоны покрытия, тени в зеркале заднего вида и физика, которая вышла из чата.",
-        content: `
-            <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
-            Я не помню, как именно мои пальцы сомкнулись на ключах зажигания. Память милосердно вырезала тот момент, когда паника превратилась из холодной дрожи в животный, всепоглощающий страх.
-            </p>
-            <p>Остался только запах — смесь дешевого автомобильного пластика, ароматизатора «Лесная свежесть» и моего собственного, кислого от ужаса пота.</p>
-            <p>Двигатель взревел, отозвавшись вибрацией во всем теле. Я вдавил педаль газа в пол, не глядя по сторонам.</p>
-            <p>Машина рванула с места с визгом, от которого заложило уши. Меня вжало в кресло, но этого было мало. Мне казалось, что я двигаюсь слишком медленно, словно во сне, где ноги вязнут в гудронном сиропе. Нужно было выбраться. Покинуть «Зону покрытия», пока невидимый купол не захлопнулся окончательно.</p>
-            <p>Спидометр перевалил за сотню. Город за окнами превратился в смазанную неоновую кашу. Я летел на красный, игнорируя возмущенные гудки встречных машин и визг тормозов где-то позади.</p>
-            <p>— Давай, давай, давай... — шептал я, вцепившись в руль так, что костяшки пальцев побелели.</p>
-            <p>Взгляд в зеркало заднего вида.</p>
-            <p>Сердце пропустило удар, споткнулось и забилось где-то в горле. Их было трое.</p>
-            <p>Это не была полиция. У полиции есть мигалки, сирены, понятная логика преследования. У того, что гналось за мной, логики не было. Это были силуэты — антропоморфные, но лишенные деталей, словно вырезанные из самой глубокой, бархатной тьмы. Они не отражали свет фонарей. Они его поглощали.</p>
-            <p>Они двигались по разделительной полосе. Пешком. Но как они двигались!</p>
-            <p>Мой мозг отказывался обрабатывать визуальную информацию. Существа не бежали в привычном смысле. Они мерцали. Вот фигура в ста метрах позади бампера. Мягкое размытие воздуха — и она уже в пятидесяти. Еще один рывок, похожий на сбой видеозаписи, — и тварь оказывается почти у багажника.</p>
-            <p>— Это невозможно, — мой голос сорвался на визг. — Физика так не работает!</p>
-            <p>Я выжал из старого седана всё, на что он был способен. Стрелка спидометра дрожала у отметки ста сорока. Но расстояние не увеличивалось.</p>
-            <hr class="w-24 h-1 bg-emerald-500 mx-auto my-12 border-0 rounded">
-            <p>Слева, по фасаду здания, мелькнула тень. Я резко повернул голову и забыл, как дышать.</p>
-            <p>Один из них бежал по вертикальной стене офисного центра. Он двигался параллельно машине, игнорируя гравитацию, словно сила притяжения была для него лишь необязательной рекомендацией. Его движения были плавными, текучими, как у ртути. Он не отталкивался от бетона, он скользил по нему.</p>
-            <p>Они загоняли меня. Профессионально. Холодно. Без эмоций.</p>
-            <p>Внутри меня что-то натянулось. Страх достиг пика, той критической точки, за которой начинается безумие. И в этот момент пространство внутри салона изменилось.</p>
-            <p>В ушах возник высокий, болезненный писк, на грани ультразвука. Волосы на руках встали дыбом, наэлектризованные до предела. Приборная панель вспыхнула всеми индикаторами сразу — "Check Engine", масло, аккумулятор, ABS — и мгновенно погасла. Магнитола, выключенная всю дорогу, взорвалась диким статическим шумом, сквозь который прорывался низкий, вибрирующий гул.</p>
-            <p>Я почувствовал жар. Не снаружи, а внутри. В костях. В крови. Словно я стал реактором, готовым взорваться.</p>
-            <p>— Что за чёрт?! — заорал я, чувствуя, как вибрирует руль в ладонях.</p>
-            <p>Эта вспышка — мой неконтролируемый выброс — сработала как сигнал атаки.</p>
-            <p>Тень, бегущая по стене, сгруппировалась и прыгнула. Она преодолела десятки метров в долю секунды, превратившись в черный снаряд.</p>
-            <p>Удар пришелся на капот.</p>
-            <p>Машину весом в полторы тонны швырнуло в сторону, словно картонную коробку. Я выкрутил руль, пытаясь поймать сцепление с дорогой, но законы физики, казалось, окончательно покинули этот участок реальности.</p>
-            <p>Мир перевернулся. Раз. Другой.</p>
-            <p>Земля и небо поменялись местами. Скрежет металла о бетон был оглушительным, он разрывал барабанные перепонки. Лобовое стекло покрылось паутиной трещин, затем осыпалось дождем алмазных осколков. Меня швыряло по салону, ремень безопасности врезался в ключицу, выбивая воздух.</p>
-            <p>Удар. Темнота.</p>
-            <p>Затем снова свет — тусклый, мигающий свет уличного фонаря, пробивающийся в разбитое окно.</p>
-            <p>Тишина наступила мгновенно. Тяжелая, ватная тишина, в которой был слышен только стук капель — то ли бензина, то ли моей крови.</p>
-            <p>Я висел вниз головой, удерживаемый ремнем. Мир плыл.</p>
-            <p>«Я жив», — вялая мысль пробилась сквозь туман контузии.</p>
-            <p>Я попытался пошевелиться, и боль пронзила все тело. Дверь заклинило. Смятый металл превратил машину в стальной гроб.</p>
-            <p>Сквозь проем разбитого окна, перевернутый вверх ногами, я увидел, как к машине приближаются они. Три тени. Они больше не спешили. Они плыли над асфальтом, не касаясь земли, и от них исходил холод — мертвый холод глубокого космоса, от которого иней начал покрывать остатки стекла прямо на моих глазах.</p>
-        `
-    },
-    {
         id: "chapter-1-raw",
         title: "Глава 1. Диссонанс",
         tag: "Протокол Безопасности",
@@ -177,57 +131,57 @@ const hiddenPosts_ru = [
             <p>Я распахнул входную дверь и вылетел на лестничную клетку, перепрыгивая через ступеньки. Мне казалось, что стены дома сжимаются, пытаясь удержать меня внутри, что сам бетон стал вязким.</p>
             <p>Я должен выбраться из зоны покрытия. Немедленно.</p>
         `
+    },
+    {
+        id: "chapter-3-constants",
+        title: "Глава 3. Нарушение констант",
+        tag: "Протокол Безопасности",
+        date: "19 Декабря 2025",
+        image: "images/grok-ruins.jpg",
+        desc: "Побег из зоны покрытия, тени в зеркале заднего вида и физика, которая вышла из чата.",
+        content: `
+            <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+            Я не помню, как именно мои пальцы сомкнулись на ключах зажигания. Память милосердно вырезала тот момент, когда паника превратилась из холодной дрожи в животный, всепоглощающий страх.
+            </p>
+            <p>Остался только запах — смесь дешевого автомобильного пластика, ароматизатора «Лесная свежесть» и моего собственного, кислого от ужаса пота.</p>
+            <p>Двигатель взревел, отозвавшись вибрацией во всем теле. Я вдавил педаль газа в пол, не глядя по сторонам.</p>
+            <p>Машина рванула с места с визгом, от которого заложило уши. Меня вжало в кресло, но этого было мало. Мне казалось, что я двигаюсь слишком медленно, словно во сне, где ноги вязнут в гудронном сиропе. Нужно было выбраться. Покинуть «Зону покрытия», пока невидимый купол не захлопнулся окончательно.</p>
+            <p>Спидометр перевалил за сотню. Город за окнами превратился в смазанную неоновую кашу. Я летел на красный, игнорируя возмущенные гудки встречных машин и визг тормозов где-то позади.</p>
+            <p>— Давай, давай, давай... — шептал я, вцепившись в руль так, что костяшки пальцев побелели.</p>
+            <p>Взгляд в зеркало заднего вида.</p>
+            <p>Сердце пропустило удар, споткнулось и забилось где-то в горле. Их было трое.</p>
+            <p>Это не была полиция. У полиции есть мигалки, сирены, понятная логика преследования. У того, что гналось за мной, логики не было. Это были силуэты — антропоморфные, но лишенные деталей, словно вырезанные из самой глубокой, бархатной тьмы. Они не отражали свет фонарей. Они его поглощали.</p>
+            <p>Они двигались по разделительной полосе. Пешком. Но как они двигались!</p>
+            <p>Мой мозг отказывался обрабатывать визуальную информацию. Существа не бежали в привычном смысле. Они мерцали. Вот фигура в ста метрах позади бампера. Мягкое размытие воздуха — и она уже в пятидесяти. Еще один рывок, похожий на сбой видеозаписи, — и тварь оказывается почти у багажника.</p>
+            <p>— Это невозможно, — мой голос сорвался на визг. — Физика так не работает!</p>
+            <p>Я выжал из старого седана всё, на что он был способен. Стрелка спидометра дрожала у отметки ста сорока. Но расстояние не увеличивалось.</p>
+            <hr class="w-24 h-1 bg-emerald-500 mx-auto my-12 border-0 rounded">
+            <p>Слева, по фасаду здания, мелькнула тень. Я резко повернул голову и забыл, как дышать.</p>
+            <p>Один из них бежал по вертикальной стене офисного центра. Он двигался параллельно машине, игнорируя гравитацию, словно сила притяжения была для него лишь необязательной рекомендацией. Его движения были плавными, текучими, как у ртути. Он не отталкивался от бетона, он скользил по нему.</p>
+            <p>Они загоняли меня. Профессионально. Холодно. Без эмоций.</p>
+            <p>Внутри меня что-то натянулось. Страх достиг пика, той критической точки, за которой начинается безумие. И в этот момент пространство внутри салона изменилось.</p>
+            <p>В ушах возник высокий, болезненный писк, на грани ультразвука. Волосы на руках встали дыбом, наэлектризованные до предела. Приборная панель вспыхнула всеми индикаторами сразу — "Check Engine", масло, аккумулятор, ABS — и мгновенно погасла. Магнитола, выключенная всю дорогу, взорвалась диким статическим шумом, сквозь который прорывался низкий, вибрирующий гул.</p>
+            <p>Я почувствовал жар. Не снаружи, а внутри. В костях. В крови. Словно я стал реактором, готовым взорваться.</p>
+            <p>— Что за чёрт?! — заорал я, чувствуя, как вибрирует руль в ладонях.</p>
+            <p>Эта вспышка — мой неконтролируемый выброс — сработала как сигнал атаки.</p>
+            <p>Тень, бегущая по стене, сгруппировалась и прыгнула. Она преодолела десятки метров в долю секунды, превратившись в черный снаряд.</p>
+            <p>Удар пришелся на капот.</p>
+            <p>Машину весом в полторы тонны швырнуло в сторону, словно картонную коробку. Я выкрутил руль, пытаясь поймать сцепление с дорогой, но законы физики, казалось, окончательно покинули этот участок реальности.</p>
+            <p>Мир перевернулся. Раз. Другой.</p>
+            <p>Земля и небо поменялись местами. Скрежет металла о бетон был оглушительным, он разрывал барабанные перепонки. Лобовое стекло покрылось паутиной трещин, затем осыпалось дождем алмазных осколков. Меня швыряло по салону, ремень безопасности врезался в ключицу, выбивая воздух.</p>
+            <p>Удар. Темнота.</p>
+            <p>Затем снова свет — тусклый, мигающий свет уличного фонаря, пробивающийся в разбитое окно.</p>
+            <p>Тишина наступила мгновенно. Тяжелая, ватная тишина, в которой был слышен только стук капель — то ли бензина, то ли моей крови.</p>
+            <p>Я висел вниз головой, удерживаемый ремнем. Мир плыл.</p>
+            <p>«Я жив», — вялая мысль пробилась сквозь туман контузии.</p>
+            <p>Я попытался пошевелиться, и боль пронзила все тело. Дверь заклинило. Смятый металл превратил машину в стальной гроб.</p>
+            <p>Сквозь проем разбитого окна, перевернутый вверх ногами, я увидел, как к машине приближаются они. Три тени. Они больше не спешили. Они плыли над асфальтом, не касаясь земли, и от них исходил холод — мертвый холод глубокого космоса, от которого иней начал покрывать остатки стекла прямо на моих глазах.</p>
+        `
     }
 ];
 
 const hiddenPosts_en = [
-    {
-        id: "chapter-3-constants",
-        title: "Chapter 3. Violation of Constants",
-        tag: "The Security Protocol",
-        date: "December 19, 2025",
-        image: "images/grok-ruins.jpg",
-        desc: "Escaping the coverage zone, shadows in the rearview mirror, and physics leaving the chat.",
-        content: `
-            <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
-            I don't remember exactly how my fingers closed around the ignition keys. Memory mercifully excised the moment when panic turned from a cold shiver into a primal, all-consuming fear.
-            </p>
-            <p>Only the smell remained—a mixture of cheap automotive plastic, "Forest Fresh" air freshener, and my own sweat, sour with terror.</p>
-            <p>The engine roared, resonating with a vibration throughout my whole body. I floored the gas pedal without looking around.</p>
-            <p>The car jerked forward with a screech that popped my ears. I was pressed into the seat, but it wasn't enough. It felt like I was moving too slowly, like in a dream where your legs get stuck in tar syrup. I had to get out. Leave the "Coverage Zone" before the invisible dome slammed shut for good.</p>
-            <p>The speedometer crossed a hundred. The city outside the windows turned into a blurred neon mush. I flew through red lights, ignoring the indignant honks of oncoming cars and the screech of brakes somewhere behind me.</p>
-            <p>— Come on, come on, come on... — I whispered, gripping the steering wheel until my knuckles turned white.</p>
-            <p>A glance in the rearview mirror.</p>
-            <p>My heart skipped a beat, stumbled, and started pounding somewhere in my throat. There were three of them.</p>
-            <p>It wasn't the police. Police have lights, sirens, understandable pursuit logic. What was chasing me had no logic. They were silhouettes—anthropomorphic but devoid of detail, as if cut from the deepest, velvet darkness. They didn't reflect the streetlights. They absorbed them.</p>
-            <p>They were moving along the divider strip. On foot. But <i>how</i> they moved!</p>
-            <p>My brain refused to process the visual information. The entities weren't running in the usual sense. They flickered. Here is a figure a hundred meters behind the bumper. A soft blur of air—and it's already at fifty. Another dash, looking like a video recording glitch—and the creature is almost at the trunk.</p>
-            <p>— That's impossible, — my voice broke into a squeal. — Physics doesn't work like that!</p>
-            <p>I squeezed everything the old sedan was capable of. The speedometer needle trembled near the one-forty mark. But the distance didn't increase.</p>
-            <hr class="w-24 h-1 bg-emerald-500 mx-auto my-12 border-0 rounded">
-            <p>To the left, along the building facade, a shadow flashed. I turned my head sharply and forgot how to breathe.</p>
-            <p>One of them was running along the vertical wall of an office center. It moved parallel to the car, ignoring gravity, as if the force of attraction was just an optional recommendation for it. Its movements were smooth, fluid, like mercury. It didn't push off the concrete; it slid along it.</p>
-            <p>They were herding me. Professionally. Coldly. Without emotion.</p>
-            <p>Something tightened inside me. Fear reached its peak, that critical point beyond which madness begins. And at that moment, the space inside the cabin changed.</p>
-            <p>A high, painful squeal arose in my ears, on the verge of ultrasound. The hair on my arms stood on end, electrified to the limit. The dashboard lit up with all indicators at once—"Check Engine," oil, battery, ABS—and instantly went dark. The radio, off the entire way, exploded with wild static noise, through which a low, vibrating hum broke through.</p>
-            <p>I felt heat. Not outside, but inside. In my bones. In my blood. As if I had become a reactor ready to explode.</p>
-            <p>— What the hell?! — I screamed, feeling the steering wheel vibrate in my palms.</p>
-            <p>This flash—my uncontrolled outburst—acted as an attack signal.</p>
-            <p>The shadow running along the wall bunched up and jumped. It covered tens of meters in a split second, turning into a black projectile.</p>
-            <p>The impact hit the hood.</p>
-            <p>The ton-and-a-half car was thrown to the side like a cardboard box. I twisted the wheel, trying to catch traction, but the laws of physics seemed to have finally left this sector of reality.</p>
-            <p>The world turned upside down. Once. Twice.</p>
-            <p>Earth and sky swapped places. The grinding of metal on concrete was deafening; it tore at my eardrums. The windshield covered in a web of cracks, then crumbled in a rain of diamond shards. I was tossed around the cabin, the seatbelt cutting into my collarbone, knocking the wind out of me.</p>
-            <p>Impact. Darkness.</p>
-            <p>Then light again—the dim, flickering light of a streetlamp breaking through the broken window.</p>
-            <p>Silence fell instantly. A heavy, cotton-like silence, in which only the sound of dripping could be heard—either gasoline or my blood.</p>
-            <p>I hung upside down, held by the belt. The world swam.</p>
-            <p>"I'm alive," a sluggish thought broke through the fog of concussion.</p>
-            <p>I tried to move, and pain pierced my whole body. The door was jammed. Crumpled metal had turned the car into a steel coffin.</p>
-            <p>Through the opening of the broken window, upside down, I saw them approaching the car. Three shadows. They were no longer in a hurry. They floated above the asphalt without touching the ground, and cold emanated from them—the dead cold of deep space, from which frost began to cover the remains of the glass right before my eyes.</p>
-        `
-    },
-    {
+        {
         id: "chapter-1-raw",
         title: "Chapter 1. Dissonance",
         tag: "The Security Protocol",
@@ -358,6 +312,52 @@ const hiddenPosts_en = [
             <p>I rushed into the hallway, grabbed the keys I had just thrown. Passport? In the glove compartment. Money? Screw it.</p>
             <p>I threw open the front door and flew out onto the stairwell, jumping over steps. It seemed to me that the walls of the house were shrinking, trying to keep me inside, that the concrete itself had become viscous.</p>
             <p>I must get out of the coverage zone. Immediately.</p>
+        `
+    },
+    {
+        id: "chapter-3-constants",
+        title: "Chapter 3. Violation of Constants",
+        tag: "The Security Protocol",
+        date: "December 19, 2025",
+        image: "images/grok-ruins.jpg",
+        desc: "Escaping the coverage zone, shadows in the rearview mirror, and physics leaving the chat.",
+        content: `
+            <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+            I don't remember exactly how my fingers closed around the ignition keys. Memory mercifully excised the moment when panic turned from a cold shiver into a primal, all-consuming fear.
+            </p>
+            <p>Only the smell remained—a mixture of cheap automotive plastic, "Forest Fresh" air freshener, and my own sweat, sour with terror.</p>
+            <p>The engine roared, resonating with a vibration throughout my whole body. I floored the gas pedal without looking around.</p>
+            <p>The car jerked forward with a screech that popped my ears. I was pressed into the seat, but it wasn't enough. It felt like I was moving too slowly, like in a dream where your legs get stuck in tar syrup. I had to get out. Leave the "Coverage Zone" before the invisible dome slammed shut for good.</p>
+            <p>The speedometer crossed a hundred. The city outside the windows turned into a blurred neon mush. I flew through red lights, ignoring the indignant honks of oncoming cars and the screech of brakes somewhere behind me.</p>
+            <p>— Come on, come on, come on... — I whispered, gripping the steering wheel until my knuckles turned white.</p>
+            <p>A glance in the rearview mirror.</p>
+            <p>My heart skipped a beat, stumbled, and started pounding somewhere in my throat. There were three of them.</p>
+            <p>It wasn't the police. Police have lights, sirens, understandable pursuit logic. What was chasing me had no logic. They were silhouettes—anthropomorphic but devoid of detail, as if cut from the deepest, velvet darkness. They didn't reflect the streetlights. They absorbed them.</p>
+            <p>They were moving along the divider strip. On foot. But <i>how</i> they moved!</p>
+            <p>My brain refused to process the visual information. The entities weren't running in the usual sense. They flickered. Here is a figure a hundred meters behind the bumper. A soft blur of air—and it's already at fifty. Another dash, looking like a video recording glitch—and the creature is almost at the trunk.</p>
+            <p>— That's impossible, — my voice broke into a squeal. — Physics doesn't work like that!</p>
+            <p>I squeezed everything the old sedan was capable of. The speedometer needle trembled near the one-forty mark. But the distance didn't increase.</p>
+            <hr class="w-24 h-1 bg-emerald-500 mx-auto my-12 border-0 rounded">
+            <p>To the left, along the building facade, a shadow flashed. I turned my head sharply and forgot how to breathe.</p>
+            <p>One of them was running along the vertical wall of an office center. It moved parallel to the car, ignoring gravity, as if the force of attraction was just an optional recommendation for it. Its movements were smooth, fluid, like mercury. It didn't push off the concrete; it slid along it.</p>
+            <p>They were herding me. Professionally. Coldly. Without emotion.</p>
+            <p>Something tightened inside me. Fear reached its peak, that critical point beyond which madness begins. And at that moment, the space inside the cabin changed.</p>
+            <p>A high, painful squeal arose in my ears, on the verge of ultrasound. The hair on my arms stood on end, electrified to the limit. The dashboard lit up with all indicators at once—"Check Engine," oil, battery, ABS—and instantly went dark. The radio, off the entire way, exploded with wild static noise, through which a low, vibrating hum broke through.</p>
+            <p>I felt heat. Not outside, but inside. In my bones. In my blood. As if I had become a reactor ready to explode.</p>
+            <p>— What the hell?! — I screamed, feeling the steering wheel vibrate in my palms.</p>
+            <p>This flash—my uncontrolled outburst—acted as an attack signal.</p>
+            <p>The shadow running along the wall bunched up and jumped. It covered tens of meters in a split second, turning into a black projectile.</p>
+            <p>The impact hit the hood.</p>
+            <p>The ton-and-a-half car was thrown to the side like a cardboard box. I twisted the wheel, trying to catch traction, but the laws of physics seemed to have finally left this sector of reality.</p>
+            <p>The world turned upside down. Once. Twice.</p>
+            <p>Earth and sky swapped places. The grinding of metal on concrete was deafening; it tore at my eardrums. The windshield covered in a web of cracks, then crumbled in a rain of diamond shards. I was tossed around the cabin, the seatbelt cutting into my collarbone, knocking the wind out of me.</p>
+            <p>Impact. Darkness.</p>
+            <p>Then light again—the dim, flickering light of a streetlamp breaking through the broken window.</p>
+            <p>Silence fell instantly. A heavy, cotton-like silence, in which only the sound of dripping could be heard—either gasoline or my blood.</p>
+            <p>I hung upside down, held by the belt. The world swam.</p>
+            <p>"I'm alive," a sluggish thought broke through the fog of concussion.</p>
+            <p>I tried to move, and pain pierced my whole body. The door was jammed. Crumpled metal had turned the car into a steel coffin.</p>
+            <p>Through the opening of the broken window, upside down, I saw them approaching the car. Three shadows. They were no longer in a hurry. They floated above the asphalt without touching the ground, and cold emanated from them—the dead cold of deep space, from which frost began to cover the remains of the glass right before my eyes.</p>
         `
     }
 ];
