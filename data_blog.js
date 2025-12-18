@@ -4,7 +4,7 @@ const blogPosts_ru = [
         title: "Просто тестирую очередной пост",
         tag: "Тест",
         date: "18 Декабря 2025",
-        image: "images/pexels-njeromin-12627131.jpg",
+        image: "images/image (1).jpg",
         desc: "Мы мечтаем загрузить сознание в облако. Но мы забываем, что без дедлайна любой проект превращается в бесконечный долгострой.",
         content: `
             <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
@@ -287,3 +287,4 @@ const blogPosts_en = [
     }
 
 ];
+
