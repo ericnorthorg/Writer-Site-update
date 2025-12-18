@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чтение | Eric North</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    // Настраиваем шрифты здесь: font-serif будет использовать Lora
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .serif-font, .article-body { font-family: 'Lora', serif; }
+        
+        /* Стили для СВЕТЛОЙ темы */
+        .article-content p { margin-bottom: 1.8rem; font-size: 1.2rem; line-height: 1.8; color: #374151; transition: color 0.3s; }
+        .article-content h3 { font-family: 'Inter', sans-serif; margin-top: 3rem; margin-bottom: 1.5rem; font-weight: 700; font-size: 1.8rem; color: #111827; transition: color 0.3s; }
+        .article-content blockquote { border-left: 4px solid #059669; padding-left: 1.5rem; margin: 2.5rem 0; font-style: italic; color: #4b5563; background: #f9fafb; padding: 24px; border-radius: 0 12px 12px 0; transition: background-color 0.3s, color 0.3s; }
+        .article-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: #374151; font-size: 1.15rem; transition: color 0.3s; }
+        .article-content li { margin-bottom: 0.5rem; }
+        .article-content img { width: 100%; height: auto; max-height: 500px; object-fit: cover; border-radius: 12px; margin: 2rem 0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .article-content hr { margin-top: 3rem; margin-bottom: 3rem; border-color: #e5e7eb; }
+        
+        /* Буквица */
+        .article-content p:first-of-type::first-letter {
+            float: left; font-size: 4.5rem; line-height: 0.8; font-weight: 700; color: #059669; margin-right: 1rem; margin-top: -0.2rem; font-family: 'Lora', serif;
+        }
+
+        /* === СТИЛИ ДЛЯ ТЕМНОЙ ТЕМЫ (Overrides) === */
+        .dark .article-content p { color: #cbd5e1; } /* slate-300 */
+        .dark .article-content ul { color: #cbd5e1; }
+        .dark .article-content h3 { color: #f1f5f9; } /* slate-100 */
+        .dark .article-content blockquote { background: #1e293b; color: #94a3b8; } /* bg-slate-800 */
+        .dark .article-content hr { border-color: #334155; }
+    </style>
+</head>
+<body class="bg-white dark:bg-slate-900 text-gray-800 dark:text-slate-300 antialiased flex flex-col min-h-screen transition-colors duration-300">
+
+    <header class="fixed w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-50 border-b border-gray-100 dark:border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center gap-4 cursor-pointer group">
+                        <svg class="w-14 h-14 transform group-hover:translate-y-[-2px] transition duration-300 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 5 L15 60 L50 95 L50 5 Z" class="fill-[#1F2937] dark:fill-slate-100 transition-colors"/>
+                            <path d="M50 5 L85 60 L50 95 L50 5 Z" fill="#059669"/>
+                            <path d="M50 40 L50 85" class="stroke-white dark:stroke-slate-900 transition-colors" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                        <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition serif-font">Eric North</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="toggleTheme()" class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition rounded-full hover:bg-gray-100 dark:hover:bg-slate-800">
+                        <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
+
+                    <div class="h-6 w-px bg-gray-200 dark:bg-slate-700 mx-1"></div>
+
+                    <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition border border-gray-200 dark:border-slate-700 rounded px-2 py-1" id="lang-btn">RU</button>
+                    
+                    <a href="blog.html" class="group flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition ml-2" data-lang-key="nav_back">
+                        <span class="transform group-hover:-translate-x-1 transition">←</span> Назад
+                    </a>
+                </div>
+
+                <div class="-mr-2 flex items-center md:hidden gap-3">
+                    <button onclick="toggleTheme()" class="p-2 text-gray-400 dark:text-slate-400">
+                        <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    </button>
+                    <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-200 dark:border-slate-700 rounded px-2 py-1" id="lang-btn-mobile">RU</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-36 pb-24 flex-grow transition-colors duration-300">
+        <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <div class="flex justify-center gap-3 mb-6">
+                    <span id="post-date" class="text-gray-400 font-medium uppercase tracking-wider text-xs">...</span>
+                    <span class="text-gray-300 dark:text-slate-600">•</span>
+                    <span id="post-tag" class="text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider text-xs">...</span>
+                </div>
+                <h1 id="post-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight mb-6 serif-font">Загрузка...</h1>
+            </div>
+            
+            <div class="rounded-2xl overflow-hidden shadow-xl mb-14 border border-gray-100 dark:border-slate-700">
+                <img id="post-image" src="" alt="Cover" class="w-full h-64 md:h-[500px] object-cover" style="display:none;">
+            </div>
+            
+            <div id="post-content" class="article-content article-body"></div>
+            
+            <div class="flex items-center justify-center my-16 opacity-30">
+                <div class="w-2 h-2 bg-gray-400 dark:bg-slate-600 rounded-full mx-1"></div>
+                <div class="w-2 h-2 bg-gray-400 dark:bg-slate-600 rounded-full mx-1"></div>
+                <div class="w-2 h-2 bg-gray-400 dark:bg-slate-600 rounded-full mx-1"></div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="blog.html" class="inline-flex items-center justify-center px-8 py-3 border border-emerald-600 dark:border-emerald-500 text-base font-medium rounded-full text-emerald-700 dark:text-emerald-400 bg-white dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700 transition shadow-sm hover:shadow-md" data-lang-key="read_more_btn">Читать другие записи</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-emerald-900 text-white border-t border-emerald-800 mt-auto">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
+                <div>
+                    <span class="font-bold text-xl tracking-tight block mb-2 serif-font">Eric North</span>
+                    <span class="text-emerald-200/60 text-sm">© 2025. All rights reserved.</span>
+                </div>
+                <div class="flex justify-center space-x-6 text-sm font-medium text-emerald-100">
+                    <a href="blog.html" class="hover:text-white transition" data-lang-key="nav_blog">Истории</a>
+                    <a href="books.html" class="hover:text-white transition" data-lang-key="nav_books">Книги</a>
+                    <a href="contact.html" class="hover:text-white transition" data-lang-key="btn_subscribe">Подписаться</a>
+                </div>
+                <div class="flex justify-center md:justify-end space-x-5">
+                    <a href="https://t.me/ВАШ_НИК" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+                    <a href="https://wa.me/ВАШ_НОМЕР" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+                    <a href="https://youtube.com/@ВАШ_КАНАЛ" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="https://x.com/ВАШ_НИК" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="search-overlay" class="fixed inset-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-[100] hidden flex flex-col pt-24 px-4 sm:px-6 lg:px-8 transition-opacity duration-300 opacity-0">
+        <button onclick="closeSearch()" class="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-900 dark:hover:text-white rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition"><svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+        <div class="max-w-3xl mx-auto w-full">
+            <input type="text" id="search-input" placeholder="Search..." class="w-full text-3xl sm:text-5xl font-bold border-b-2 border-gray-200 dark:border-slate-700 py-4 focus:outline-none focus:border-emerald-600 bg-transparent text-gray-900 dark:text-white placeholder-gray-300 dark:placeholder-slate-600 transition-colors" oninput="performSearch(this.value)">
+            <div id="search-results" class="mt-12 space-y-8 overflow-y-auto max-h-[60vh] pb-20"></div>
+        </div>
+    </div>
+
+    <script src="data_home.js"></script>
+    <script src="data_blog.js"></script>
+    <script src="data_books.js"></script>
+    <script src="data_notes.js"></script>
+    <script src="data_hidden.js"></script>
+    <script src="database.js"></script>
+
+    <script>
+        // === ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ===
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        const translations = {
+            ru: { nav_back: "← Назад", read_more_btn: "Читать другие записи", nav_blog: "Истории", nav_books: "Книги", btn_subscribe: "Подписаться" },
+            en: { nav_back: "← Back", read_more_btn: "Read more stories", nav_blog: "Stories", nav_books: "Books", btn_subscribe: "Subscribe" }
+        };
+
+        const lang = localStorage.getItem('site_lang') || 'ru';
+        document.getElementById('lang-btn').innerText = lang.toUpperCase();
+        document.querySelectorAll('[data-lang-key]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-lang-key')]);
+        
+        function toggleLanguage() { localStorage.setItem('site_lang', lang === 'ru' ? 'en' : 'ru'); location.reload(); }
+
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+        let post = null;
+
+        async function loadAndFindPost() {
+            try {
+                let posts = await loadGoogleSheet('blog');
+                post = posts.find(p => p.id === postId);
+                if (!post) {
+                    let hidden = await loadGoogleSheet('hidden');
+                    if (hidden && hidden.length > 0) {
+                        post = hidden.find(p => p.id === postId);
+                    }
+                }
+
+                if (post) {
+                    document.title = post.title + " | Eric North";
+                    document.getElementById('post-title').innerText = post.title;
+                    document.getElementById('post-date').innerText = post.date || "";
+                    document.getElementById('post-tag').innerText = post.tag || "Запись";
+                    document.getElementById('post-content').innerHTML = post.content;
+                    const img = document.getElementById('post-image');
+                    if (post.image) { 
+                        img.src = post.image; 
+                        img.style.display = 'block'; 
+                    } else {
+                        img.style.display = 'none';
+                    }
+                } else {
+                    document.getElementById('post-title').innerText = (lang === 'ru') ? "История не найдена" : "Story not found";
+                    document.getElementById('post-content').innerHTML = "<p class='text-center text-gray-400 mt-10 text-xl'>404</p>";
+                    document.getElementById('post-date').style.display = 'none';
+                    document.getElementById('post-image').style.display = 'none';
+                }
+            } catch (err) {
+                console.error("Ошибка при загрузке поста:", err);
+            }
+        }
+        
+        loadAndFindPost();
+
+        // Поиск
+        const overlay = document.getElementById('search-overlay'); const input = document.getElementById('search-input'); const resultsContainer = document.getElementById('search-results');
+        function openSearch() { overlay.classList.remove('hidden'); setTimeout(() => { overlay.classList.remove('opacity-0'); input.focus(); }, 50); document.body.style.overflow = 'hidden'; }
+        function closeSearch() { overlay.classList.add('opacity-0'); setTimeout(() => { overlay.classList.add('hidden'); input.value = ''; resultsContainer.innerHTML = ''; }, 300); document.body.style.overflow = ''; }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
+        function performSearch(query) {
+            if (!query || query.length < 2) { resultsContainer.innerHTML = '<div class="text-center text-gray-400 mt-10">Введите минимум 2 символа...</div>'; return; }
+            query = query.toLowerCase(); let matches = [];
+            loadGoogleSheet('blog').then(posts => {
+                posts.forEach(post => { if (post.title.toLowerCase().includes(query) || post.desc.toLowerCase().includes(query)) matches.push({ type: 'История', title: post.title, desc: post.desc, link: `post.html?id=${post.id}`, color: 'text-emerald-600' }); });
+                loadGoogleSheet('books').then(books => {
+                    books.forEach(book => { if (book.title.toLowerCase().includes(query) || book.desc.toLowerCase().includes(query)) matches.push({ type: 'Книга', title: book.title, desc: book.desc, link: book.link || 'books.html', color: 'text-indigo-600' }); });
+                    loadGoogleSheet('notes').then(notes => {
+                        notes.forEach(note => { if (note.title.toLowerCase().includes(query) || (note.desc && note.desc.toLowerCase().includes(query))) matches.push({ type: 'Заметка', title: note.title, desc: note.desc, link: 'announcements.html', color: 'text-amber-600' }); });
+                        if (matches.length === 0) resultsContainer.innerHTML = '<div class="text-center text-gray-500 mt-10">Ничего не найдено.</div>';
+                        else { resultsContainer.innerHTML = ''; matches.forEach(item => { resultsContainer.innerHTML += `<a href="${item.link}" onclick="closeSearch()" class="block group border-b border-gray-100 dark:border-slate-700 pb-6 hover:bg-gray-50 dark:hover:bg-slate-800 p-4 -mx-4 rounded-xl transition"><div class="flex items-center gap-3 mb-1"><span class="text-xs font-bold uppercase tracking-wider ${item.color}">${item.type}</span></div><h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">${item.title}</h3><p class="text-gray-500 dark:text-slate-400 mt-1 line-clamp-2">${item.desc}</p></a>`; }); }
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>

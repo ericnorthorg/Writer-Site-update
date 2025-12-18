@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка 404 | Нарушение Протокола</title>
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .serif-font { font-family: 'Lora', serif; }
+        
+        /* Эффект шума на фоне */
+        .noise-bg {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        /* Анимация пульсации для огромных цифр */
+        @keyframes breathe {
+            0%, 100% { opacity: 0.05; transform: scale(1); }
+            50% { opacity: 0.1; transform: scale(1.02); }
+        }
+        .giant-text { animation: breathe 4s infinite ease-in-out; }
+
+        /* Эффект мигающего курсора */
+        .cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="noise-bg text-slate-300 h-screen flex flex-col items-center justify-center overflow-hidden relative selection:bg-rose-500 selection:text-white">
+
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+        <span class="text-[20rem] md:text-[30rem] font-black text-emerald-500 giant-text leading-none">404</span>
+    </div>
+
+    <div class="relative z-10 max-w-2xl px-6 text-center">
+        
+        <div class="inline-flex mb-8 p-4 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-500 shadow-[0_0_30px_rgba(244,63,94,0.2)]">
+            <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 serif-font tracking-tight">
+            Сектор <span class="text-rose-500">Стерилизован</span>
+        </h1>
+
+        <div class="space-y-4 font-mono text-sm md:text-base text-slate-400 bg-slate-900/50 p-6 rounded-xl border border-slate-800 backdrop-blur-sm shadow-2xl">
+            <p class="flex items-center justify-between border-b border-slate-800 pb-2">
+                <span>STATUS:</span> 
+                <span class="text-rose-400 font-bold">CRITICAL_MISSING</span>
+            </p>
+            <p class="text-left leading-relaxed">
+                <span class="text-emerald-500 cursor">SYSTEM_LOG:</span> 
+                Запрашиваемый файл был изъят из публичного доступа. Либо он никогда не существовал, либо вы пытаетесь получить доступ к воспоминанию, которое было удалено при последнем обновлении реальности.
+            </p>
+            <p class="text-left text-xs text-slate-500 italic pt-2">
+                "Если вы видите это сообщение, значит Протокол все еще работает."
+            </p>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+            <a href="index.html" class="px-8 py-3.5 rounded-full bg-emerald-600 text-white font-bold hover:bg-emerald-500 transition shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transform hover:-translate-y-1">
+                Инициировать возврат
+            </a>
+            <a href="contact.html" class="px-8 py-3.5 rounded-full border border-slate-700 text-slate-300 font-medium hover:bg-slate-800 hover:text-white transition">
+                Сообщить о сбое
+            </a>
+        </div>
+
+    </div>
+
+    <div class="absolute bottom-8 text-xs text-slate-600 font-mono">
+        ERR_CODE: REALITY_NOT_RENDERED // 0x000F4240
+    </div>
+
+</body>
+</html>
