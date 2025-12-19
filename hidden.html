@@ -29,9 +29,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .serif-font { font-family: 'Lora', serif; }
+        .serif-font, .article-body { font-family: 'Lora', serif; }
         .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .article-body p { margin-bottom: 1.5rem; line-height: 1.8; color: #cbd5e1; }
+        .article-body p:first-of-type::first-letter { float: left; font-size: 3.5rem; line-height: 0.8; font-weight: 700; color: #10B981; margin-right: 1rem; }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased flex flex-col min-h-screen transition-colors duration-300">
@@ -40,7 +43,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <div class="flex items-center">
-                    
                     <a href="index.html" class="flex-shrink-0 flex items-center gap-4 cursor-pointer group">
                         <svg class="w-14 h-14 transform group-hover:translate-y-[-2px] transition duration-300 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M50 5 L15 60 L50 95 L50 5 Z" class="fill-[#334155] dark:fill-[#334155] transition-colors"/>
@@ -49,15 +51,11 @@
                         </svg>
                         <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition serif-font">Eric North</span>
                     </a>
-
-                    <nav class="hidden md:ml-12 md:flex space-x-8">
-                        <a href="blog.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_blog">Истории</a>
-                        <a href="books.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_books">Книги</a>
-                        <a href="announcements.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_notes">Заметки</a>
-                    </nav>
                 </div>
 
-                <div class="hidden md:flex items-center gap-4">
+                <div class="flex items-center gap-4">
+                     <a href="hidden.html" id="back-to-list-btn" class="hidden text-sm font-mono text-emerald-600 dark:text-emerald-400 hover:underline transition" data-lang-key="back_to_list">← НАЗАД К СПИСКУ</a>
+                     
                      <button onclick="toggleTheme()" class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition rounded-full hover:bg-gray-100 dark:hover:bg-slate-800">
                         <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                         <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
@@ -66,27 +64,51 @@
                      <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-600 dark:hover:border-emerald-400 transition" id="lang-btn">RU</button>
                      <a href="index.html" class="text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-white transition" data-lang-key="nav_exit">Выход из системы →</a>
                 </div>
-
-                <div class="-mr-2 flex items-center md:hidden gap-2">
-                    <button onclick="toggleTheme()" class="p-2 text-gray-400 dark:text-slate-400">
-                        <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                        <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                    </button>
-                    <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-2 py-1" id="lang-btn-mobile">RU</button>
-                </div>
             </div>
         </div>
     </header>
 
     <main class="pt-32 pb-20 flex-grow transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <div class="inline-block px-3 py-1 mb-4 border border-emerald-500/30 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono uppercase tracking-widest" data-lang-key="access_msg">Access Granted</div>
-                <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl serif-font mb-4" data-lang-key="page_title">Протокол Безопасности</h1>
-                <p class="max-w-2xl mx-auto text-xl text-gray-500 dark:text-slate-400" data-lang-key="page_subtitle">Черновики, удаленные сцены и материалы "в работе".</p>
-            </div>
             
-            <div id="hidden-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-2"></div>
+            <div id="list-view">
+                <div class="text-center mb-10">
+                    <div class="inline-block px-3 py-1 mb-4 border border-emerald-500/30 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono uppercase tracking-widest" data-lang-key="access_msg">Access Granted</div>
+                    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl serif-font mb-4" data-lang-key="page_title">Протокол Безопасности</h1>
+                    <p class="max-w-2xl mx-auto text-xl text-gray-500 dark:text-slate-400" data-lang-key="page_subtitle">Черновики, удаленные сцены и материалы "в работе".</p>
+                </div>
+                
+                <div id="hidden-filters" class="flex flex-wrap gap-2 justify-center mb-12 fade-in-up"></div>
+
+                <div id="hidden-grid" class="grid gap-8 md:grid-cols-2 lg:grid-cols-2"></div>
+            </div>
+
+            <div id="reader-view" class="hidden max-w-3xl mx-auto fade-in-up">
+                <div class="mb-10 text-center">
+                    <span id="post-tag" class="text-emerald-500 font-mono text-xs uppercase tracking-widest border border-emerald-500/30 px-2 py-1 rounded">TAG</span>
+                    <h1 id="post-title" class="text-3xl sm:text-4xl font-bold text-white mt-4 serif-font">...</h1>
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg border border-slate-700 mb-10">
+                    <img id="post-image" src="" class="w-full h-64 object-cover opacity-80">
+                </div>
+                
+                <div id="post-content" class="article-body text-lg text-slate-300"></div>
+                
+                <div class="mt-16 pt-8 border-t border-slate-800">
+                    <div class="flex justify-between items-center text-sm font-mono">
+                        <div id="prev-chapter-container">
+                            </div>
+                        
+                        <a href="hidden.html" class="text-gray-500 hover:text-white transition flex items-center">
+                            <span class="mr-2">■</span> <span data-lang-key="return_archive">АРХИВ</span>
+                        </a>
+
+                        <div id="next-chapter-container">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -118,8 +140,30 @@
         }
 
         const translations = {
-            ru: { nav_blog: "Истории", nav_books: "Книги", nav_notes: "Заметки", nav_exit: "Выход из системы →", access_msg: "Доступ Разрешен", page_title: "Протокол Безопасности", page_subtitle: "Черновики, удаленные сцены и материалы 'в работе'.", read_btn: "Читать данные" },
-            en: { nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", nav_exit: "System Logout →", access_msg: "Access Granted", page_title: "The Security Protocol", page_subtitle: "Drafts, deleted scenes, and WIP materials.", read_btn: "Read Data" }
+            ru: { 
+                nav_exit: "Выход из системы →", 
+                access_msg: "Доступ Разрешен", 
+                page_title: "Протокол Безопасности", 
+                page_subtitle: "Черновики, удаленные сцены и материалы 'в работе'.", 
+                read_btn: "Читать данные",
+                back_to_list: "← НАЗАД К СПИСКУ",
+                return_archive: "В АРХИВ",
+                prev_chapter: "← ПРЕД.",
+                next_chapter: "СЛЕД. →",
+                filter_all: "ВСЕ МАТЕРИАЛЫ"
+            },
+            en: { 
+                nav_exit: "System Logout →", 
+                access_msg: "Access Granted", 
+                page_title: "The Security Protocol", 
+                page_subtitle: "Drafts, deleted scenes, and WIP materials.", 
+                read_btn: "Read Data",
+                back_to_list: "← BACK TO LIST",
+                return_archive: "ARCHIVE",
+                prev_chapter: "← PREV",
+                next_chapter: "NEXT →",
+                filter_all: "ALL FILES"
+            }
         };
 
         const lang = localStorage.getItem('site_lang') || 'ru';
@@ -129,15 +173,80 @@
         
         function toggleLanguage() { localStorage.setItem('site_lang', lang === 'ru' ? 'en' : 'ru'); location.reload(); }
 
+        // === ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ===
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+        let allHiddenPosts = []; // Храним все посты глобально
+
+        const listView = document.getElementById('list-view');
+        const readerView = document.getElementById('reader-view');
+        const backBtn = document.getElementById('back-to-list-btn');
         const grid = document.getElementById('hidden-grid');
-        grid.innerHTML = '<div class="col-span-2 text-center text-gray-500 dark:text-slate-600 font-mono">Decrypting data...</div>';
-        
+        const filterContainer = document.getElementById('hidden-filters');
+
+        // === ИНИЦИАЛИЗАЦИЯ ===
         loadGoogleSheet('hidden').then(posts => {
+            allHiddenPosts = posts;
+            
+            if (postId) {
+                // Если есть ID, сразу открываем читалку
+                renderReader(posts, postId);
+            } else {
+                // Иначе показываем фильтры и список
+                renderFilters(posts);
+                renderList(posts);
+            }
+        });
+
+        // 1. ГЕНЕРАЦИЯ ФИЛЬТРОВ (ПО НАЗВАНИЮ КНИГ/ТЕГАМ)
+        function renderFilters(posts) {
+            const tags = ['All', ...new Set(posts.map(p => p.tag))];
+            const allText = translations[lang]['filter_all'];
+
+            filterContainer.innerHTML = tags.map(tag => {
+                const label = tag === 'All' ? allText : tag;
+                return `<button onclick="filterHiddenPosts('${tag}')" 
+                        class="filter-btn px-4 py-2 rounded-full text-xs font-mono uppercase tracking-widest transition duration-300 border 
+                        ${tag === 'All' ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500'}"
+                        data-tag="${tag}">
+                        ${label}
+                    </button>`;
+            }).join('');
+        }
+
+        function filterHiddenPosts(selectedTag) {
+            // Обновляем стили кнопок
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.tag === selectedTag) {
+                    btn.className = 'filter-btn px-4 py-2 rounded-full text-xs font-mono uppercase tracking-widest transition duration-300 border bg-emerald-600 border-emerald-600 text-white';
+                } else {
+                    btn.className = 'filter-btn px-4 py-2 rounded-full text-xs font-mono uppercase tracking-widest transition duration-300 border bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-500 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500';
+                }
+            });
+
+            const filtered = (selectedTag === 'All') 
+                ? allHiddenPosts 
+                : allHiddenPosts.filter(p => p.tag === selectedTag);
+            
+            renderList(filtered);
+        }
+
+        // 2. ОТОБРАЖЕНИЕ СПИСКА (СЕТКА)
+        function renderList(posts) {
+            listView.classList.remove('hidden');
+            readerView.classList.add('hidden');
+            backBtn.classList.add('hidden');
+
+            if (posts.length === 0) {
+                grid.innerHTML = '<div class="col-span-2 text-center text-gray-500 dark:text-slate-600 font-mono py-10">No data found.</div>';
+                return;
+            }
+
             grid.innerHTML = '';
             posts.forEach((post, index) => {
                 const readText = translations[lang]['read_btn'];
                 grid.innerHTML += `
-                    <a href="post.html?id=${post.id}" class="group flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500/50 shadow-sm hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition duration-300 fade-in-up" style="animation-delay: ${index * 100}ms">
+                    <a href="hidden.html?id=${post.id}" class="group flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:border-emerald-500 dark:hover:border-emerald-500/50 shadow-sm hover:shadow-lg dark:hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition duration-300 fade-in-up" style="animation-delay: ${index * 100}ms">
                         <div class="relative h-48 overflow-hidden">
                             <div class="absolute inset-0 bg-slate-900/0 dark:bg-slate-900/20 group-hover:bg-transparent transition z-10"></div>
                             <img class="h-full w-full object-cover transform group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100" src="${post.image}" alt="">
@@ -156,7 +265,70 @@
                     </a>
                 `;
             });
-        });
+        }
+
+        // 3. ОТОБРАЖЕНИЕ ЧИТАЛКИ (И НАВИГАЦИЯ ПО ГЛАВАМ)
+        function renderReader(posts, id) {
+            const post = posts.find(p => p.id === id);
+            
+            if (!post) {
+                renderFilters(posts); // Показываем фильтры если пост не найден
+                renderList(posts);
+                return;
+            }
+
+            listView.classList.add('hidden');
+            readerView.classList.remove('hidden');
+            backBtn.classList.remove('hidden');
+
+            document.title = post.title + " | Protocol";
+            document.getElementById('post-title').innerText = post.title;
+            document.getElementById('post-tag').innerText = post.tag;
+            document.getElementById('post-content').innerHTML = post.content;
+            
+            const img = document.getElementById('post-image');
+            if (post.image) {
+                img.src = post.image;
+                img.parentElement.style.display = 'block';
+            } else {
+                img.parentElement.style.display = 'none';
+            }
+
+            // === ЛОГИКА СОСЕДНИХ ГЛАВ ===
+            // 1. Фильтруем только главы ЭТОЙ книги (по тегу)
+            const currentBookChapters = posts.filter(p => p.tag === post.tag);
+            
+            // 2. Находим индекс текущей главы
+            const currentIndex = currentBookChapters.findIndex(p => p.id === id);
+            
+            // 3. Рендерим кнопки
+            const prevContainer = document.getElementById('prev-chapter-container');
+            const nextContainer = document.getElementById('next-chapter-container');
+            
+            // Кнопка "Назад"
+            if (currentIndex > 0) {
+                const prevPost = currentBookChapters[currentIndex - 1];
+                prevContainer.innerHTML = `
+                    <a href="hidden.html?id=${prevPost.id}" class="flex items-center text-emerald-600 hover:text-emerald-400 transition group">
+                        <span class="mr-2 group-hover:-translate-x-1 transition">${translations[lang]['prev_chapter']}</span>
+                        <span class="hidden md:inline text-gray-500 group-hover:text-emerald-400 line-clamp-1 max-w-[150px]">${prevPost.title}</span>
+                    </a>`;
+            } else {
+                prevContainer.innerHTML = '';
+            }
+
+            // Кнопка "Вперед"
+            if (currentIndex < currentBookChapters.length - 1) {
+                const nextPost = currentBookChapters[currentIndex + 1];
+                nextContainer.innerHTML = `
+                    <a href="hidden.html?id=${nextPost.id}" class="flex items-center text-emerald-600 hover:text-emerald-400 transition group text-right">
+                        <span class="hidden md:inline text-gray-500 group-hover:text-emerald-400 line-clamp-1 max-w-[150px] mr-2">${nextPost.title}</span>
+                        <span class="ml-2 group-hover:translate-x-1 transition">${translations[lang]['next_chapter']}</span>
+                    </a>`;
+            } else {
+                nextContainer.innerHTML = '';
+            }
+        }
     </script>
 </body>
 </html>
