@@ -32,6 +32,29 @@
         .serif-font { font-family: 'Lora', serif; }
         .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #10B981;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-slate-300 antialiased flex flex-col min-h-screen transition-colors duration-300">
@@ -104,6 +127,8 @@
         </div>
     </main>
 
+    <div id="toast">Link copied!</div>
+
     <footer class="bg-emerald-900 text-white border-t border-emerald-800 mt-auto">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
@@ -154,8 +179,8 @@
         }
 
         const translations = {
-            ru: { nav_blog: "Истории", nav_books: "Книги", nav_notes: "Заметки", btn_subscribe: "Подписаться", page_title: "Хроники", page_subtitle: "Заметки о мирах, которые могли бы существовать." },
-            en: { nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", btn_subscribe: "Subscribe", page_title: "Chronicles", page_subtitle: "Notes on worlds that could exist." }
+            ru: { nav_blog: "Истории", nav_books: "Книги", nav_notes: "Заметки", btn_subscribe: "Подписаться", page_title: "Хроники", page_subtitle: "Заметки о мирах, которые могли бы существовать.", toast_copied: "Ссылка скопирована!", all_stories: "Все истории" },
+            en: { nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", btn_subscribe: "Subscribe", page_title: "Chronicles", page_subtitle: "Notes on worlds that could exist.", toast_copied: "Link copied!", all_stories: "All Stories" }
         };
 
         const lang = localStorage.getItem('site_lang') || 'ru';
@@ -165,20 +190,88 @@
         function toggleLanguage() { localStorage.setItem('site_lang', lang === 'ru' ? 'en' : 'ru'); location.reload(); }
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
+        // --- ЛОГИКА БЛОГА ---
         const grid = document.getElementById('blog-grid');
-        grid.innerHTML = '<div class="col-span-3 text-center text-gray-400">Loading stories...</div>';
-        
+        let allPosts = []; // Храним все посты здесь
+
+        // 1. Загрузка данных
         loadGoogleSheet('blog').then(posts => {
+            allPosts = posts;
+            renderCategories(posts); // Генерируем кнопки
+            renderPosts(posts);      // Рисуем все посты
+        });
+
+        // 2. Генерация кнопок категорий (Автоматически!)
+        function renderCategories(posts) {
+            // Собираем уникальные теги
+            const tags = ['All', ...new Set(posts.map(p => p.tag))];
+            
+            // Создаем контейнер для фильтров, если его нет (вставьте этот div в HTML перед #blog-grid, если хотите, или скрипт создаст сам)
+            let filterContainer = document.getElementById('category-filters');
+            if (!filterContainer) {
+                filterContainer = document.createElement('div');
+                filterContainer.id = 'category-filters';
+                filterContainer.className = 'flex flex-wrap gap-2 justify-center mb-12 fade-in-up';
+                grid.parentNode.insertBefore(filterContainer, grid);
+            }
+
+            const allText = (lang === 'ru') ? 'Все' : 'All';
+
+            filterContainer.innerHTML = tags.map(tag => {
+                const label = tag === 'All' ? allText : tag;
+                // Стили для кнопок
+                return `<button onclick="filterPosts('${tag}')" 
+                        class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition duration-300 border border-gray-200 dark:border-slate-700 
+                        ${tag === 'All' ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-500'}"
+                        data-tag="${tag}">
+                        ${label}
+                    </button>`;
+            }).join('');
+        }
+
+        // 3. Фильтрация
+        function filterPosts(selectedTag) {
+            // Обновляем вид кнопок
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.tag === selectedTag) {
+                    btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-gray-600', 'dark:text-slate-400', 'hover:border-emerald-500');
+                    btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                } else {
+                    btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-gray-600', 'dark:text-slate-400', 'hover:border-emerald-500');
+                    btn.classList.remove('bg-emerald-600', 'text-white', 'border-emerald-600');
+                }
+            });
+
+            // Фильтруем массив
+            const filtered = (selectedTag === 'All') 
+                ? allPosts 
+                : allPosts.filter(p => p.tag === selectedTag);
+            
+            renderPosts(filtered);
+        }
+
+        // 4. Отрисовка постов
+        function renderPosts(posts) {
+            if (posts.length === 0) {
+                grid.innerHTML = '<div class="col-span-3 text-center text-gray-400 py-10">Ничего не найдено</div>';
+                return;
+            }
+
             grid.innerHTML = '';
             posts.forEach((post, index) => {
                 grid.innerHTML += `
-                    <article class="flex flex-col overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition duration-300 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 fade-in-up" style="animation-delay: ${index * 100}ms">
+                    <article class="flex flex-col overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition duration-300 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 fade-in-up group relative" style="animation-delay: ${index * 50}ms">
                         <div class="flex-shrink-0">
                             <img class="h-56 w-full object-cover transform hover:scale-105 transition duration-700" src="${post.image}" alt="">
                         </div>
                         <div class="flex-1 bg-white dark:bg-slate-800 p-8 flex flex-col justify-between">
                             <div class="flex-1">
-                                <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-2">${post.tag}</p>
+                                <div class="flex justify-between items-start">
+                                    <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-2">${post.tag}</p>
+                                    <button onclick="event.preventDefault(); copyPostLink('${post.id}')" class="text-gray-300 hover:text-emerald-600 dark:text-slate-600 dark:hover:text-emerald-400 transition" title="Copy Link">
+                                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+                                    </button>
+                                </div>
                                 <a href="post.html?id=${post.id}" class="block mt-2">
                                     <p class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition serif-font">${post.title}</p>
                                     <p class="mt-3 text-base text-gray-500 dark:text-slate-400 line-clamp-3">${post.desc}</p>
@@ -191,7 +284,17 @@
                     </article>
                 `;
             });
-        });
+        }
+
+        function copyPostLink(id) {
+            const link = window.location.origin + window.location.pathname.replace('blog.html', '') + `post.html?id=${id}`;
+            navigator.clipboard.writeText(link).then(() => {
+                const toast = document.getElementById('toast');
+                toast.innerText = translations[lang]['toast_copied'];
+                toast.className = 'show';
+                setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
+            });
+        }
 
         // Поиск (стандарт)
         const overlay = document.getElementById('search-overlay'); const input = document.getElementById('search-input'); const resultsContainer = document.getElementById('search-results');
