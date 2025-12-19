@@ -1,6 +1,6 @@
 const notes_ru = [
-    { date: "Сегодня", type: "в процессе", title: "Глава 7: Сбой", desc: "Застрял на сцене активации артефакта. Логика магии требует жертвы.", percent: 15 },
-    { date: "Вчера", lable: "изображение", type: "image", title: "Референс", desc: "Искал визуализацию для Запретной Зоны.", image: "../images/pexels-zeeshaanshabbir-7856066.jpg" },
+    { date: "Сегодня", type: "progress", title: "Глава 7: Сбой", desc: "Застрял на сцене активации артефакта. Логика магии требует жертвы.", percent: 15 },
+    { date: "Вчера", type: "image", title: "Референс", desc: "Искал визуализацию для Запретной Зоны.", image: "../images/pexels-zeeshaanshabbir-7856066.jpg" },
     { date: "3 дня назад", type: "запись", title: "Идея", desc: "А что, если Протокол Безопасности защищает не нас от магии, а магию от нас?" }
 ];
 
@@ -10,6 +10,7 @@ const notes_en = [
     { date: "3 days ago", type: "text", title: "Idea", desc: "What if the Security Protocol doesn't protect us from magic, but magic from us?" }
 
 ];
+
 
 
 
