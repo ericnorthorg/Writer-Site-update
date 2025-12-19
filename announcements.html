@@ -48,7 +48,6 @@
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: -1;
-            /* Генерация шума через SVG фильтр */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
             opacity: 0.4;
             mix-blend-mode: multiply;
@@ -70,7 +69,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
                 <div class="flex items-center">
-                    
                     <a href="index.html" class="flex-shrink-0 flex items-center gap-4 cursor-pointer group">
                         <svg class="w-14 h-14 transform group-hover:translate-y-[-2px] transition duration-300 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M50 5 L15 60 L50 95 L50 5 Z" class="fill-[#1F2937] dark:fill-slate-100 transition-colors"/>
@@ -81,6 +79,7 @@
                     </a>
 
                     <nav class="hidden md:ml-12 md:flex space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_index">Главная</a>
                         <a href="blog.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_blog">Истории</a>
                         <a href="books.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_books">Книги</a>
                         <a href="announcements.html" class="text-emerald-600 dark:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_notes">Заметки</a>
@@ -88,20 +87,15 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-3">
-                    
                     <button onclick="toggleTheme()" class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition rounded-full hover:bg-gray-100 dark:hover:bg-slate-800">
                         <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                         <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                     </button>
-
                     <div class="h-6 w-px bg-gray-200 dark:bg-slate-700 mx-1"></div>
-
                     <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition border border-gray-200 dark:border-slate-700 rounded px-2 py-1" id="lang-btn">RU</button>
-
                     <button onclick="openSearch()" class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition rounded-full hover:bg-gray-100 dark:hover:bg-slate-800">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                     </button>
-                    
                     <a href="contact.html" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-lg shadow-emerald-200 dark:shadow-none ml-2" data-lang-key="btn_subscribe">Подписаться</a>
                 </div>
 
@@ -126,14 +120,20 @@
 
     <main class="pt-32 pb-20 flex-grow transition-colors duration-300">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-in-up">
+            <div class="text-center mb-8 fade-in-up">
                 <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl serif-font mb-4" data-lang-key="page_title">Рабочий журнал</h1>
                 <p class="text-xl text-gray-500 dark:text-slate-400 max-w-2xl mx-auto" data-lang-key="page_subtitle">Мысли, прогресс и спонтанные идеи.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 justify-center md:justify-start mb-12 fade-in-up" style="animation-delay: 0.1s">
+                <button onclick="setFilter('all')" id="filter-all" class="px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm bg-emerald-600 text-white hover:bg-emerald-700" data-lang-key="filter_all">Все</button>
+                <button onclick="setFilter('brain')" id="filter-brain" class="px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400" data-lang-key="filter_brain">Штурм</button>
+                <button onclick="setFilter('observation')" id="filter-observation" class="px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400" data-lang-key="filter_observation">Наблюдение</button>
+                <button onclick="setFilter('thoughts')" id="filter-thoughts" class="px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400" data-lang-key="filter_thoughts">Мысли вслух</button>
             </div>
             
             <div class="relative">
                 <div class="absolute left-8 md:left-1/2 h-full w-px bg-emerald-300 dark:bg-emerald-900/50 transform md:-translate-x-1/2 shadow-sm"></div>
-                
                 <div id="notes-list" class="space-y-6">
                     </div>
             </div>
@@ -198,14 +198,38 @@
         }
 
         const translations = {
-            ru: { nav_blog: "Истории", nav_books: "Книги", nav_notes: "Заметки", btn_subscribe: "Подписаться", page_title: "Рабочий журнал", page_subtitle: "Мысли, прогресс и спонтанные идеи." },
-            en: { nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", btn_subscribe: "Subscribe", page_title: "Work Journal", page_subtitle: "Thoughts, progress, and spontaneous ideas." }
+            ru: { 
+                nav_index: "Главная",
+                nav_blog: "Истории", 
+                nav_books: "Книги", 
+                nav_notes: "Заметки", 
+                btn_subscribe: "Подписаться", 
+                page_title: "Рабочий журнал", 
+                page_subtitle: "Мысли, прогресс и спонтанные идеи.",
+                filter_all: "Все",
+                filter_brain: "Штурм",
+                filter_observation: "Наблюдение",
+                filter_thoughts: "Мысли вслух"
+            },
+            en: { 
+                nav_index: "Home", 
+                nav_blog: "Stories", 
+                nav_books: "Books", 
+                nav_notes: "Notes", 
+                btn_subscribe: "Subscribe", 
+                page_title: "Work Journal", 
+                page_subtitle: "Thoughts, progress, and spontaneous ideas.",
+                filter_all: "All",
+                filter_brain: "Brainstorm",
+                filter_observation: "Observation",
+                filter_thoughts: "Thoughts"
+            }
         };
 
-        // Словарик для перевода типов заметок (так как в JS файле они теперь на английском)
+        // СЛОВАРЬ КАРТОЧЕК
         const typeTranslations = {
-            ru: { progress: "процесс", image: "изображение", text: "запись" },
-            en: { progress: "progress", image: "image", text: "note" }
+            ru: { home: "Главная", progress: "штурм", brain: "штурм", image: "наблюдение", idea: "наблюдение", text: "мысли вслух", note: "мысли вслух" },
+            en: { progress: "brainstorm", brain: "brainstorm", image: "observation", idea: "observation", text: "thoughts", note: "thoughts" }
         };
 
         const lang = localStorage.getItem('site_lang') || 'ru';
@@ -215,30 +239,22 @@
         function toggleLanguage() { localStorage.setItem('site_lang', lang === 'ru' ? 'en' : 'ru'); location.reload(); }
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
-        // === НОВАЯ ФУНКЦИЯ: Умное форматирование даты ===
         function formatRelativeDate(dateString) {
             let date;
             const lang = getLanguage();
-
             if (lang === 'ru') {
-                // Разбираем формат DD-MM-YYYY для русского языка
                 const parts = dateString.split('-');
                 if (parts.length === 3) {
-                    // new Date(year, monthIndex, day) - monthIndex начинается с 0
                     date = new Date(parts[2], parts[1] - 1, parts[0]);
                 } else {
-                    date = new Date(dateString); // На всякий случай
+                    date = new Date(dateString);
                 }
             } else {
-                // Для английского (и других) используем стандартный парсер (ожидает YYYY-MM-DD)
                 date = new Date(dateString);
             }
-            
-            // Проверка на валидность даты
-            if (isNaN(date.getTime())) return dateString; // Если не смогли распарсить, возвращаем как есть
+            if (isNaN(date.getTime())) return dateString;
 
             const now = new Date();
-            // Сбрасываем время для корректного сравнения дней
             const dateMidnight = new Date(date.getFullYear(), date.getMonth(), date.getDate());
             const nowMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
@@ -248,7 +264,6 @@
             if (diffDays === 0) return lang === 'ru' ? 'Сегодня' : 'Today';
             if (diffDays === 1) return lang === 'ru' ? 'Вчера' : 'Yesterday';
             
-            // Склонение дней для русского языка
             if (lang === 'ru') {
                 if (diffDays > 1 && diffDays < 5) return `${diffDays} дня назад`;
                 if (diffDays >= 5 && diffDays < 30) return `${diffDays} дней назад`;
@@ -256,85 +271,124 @@
                 if (diffDays > 1 && diffDays < 30) return `${diffDays} days ago`;
             }
 
-            // Если прошло много времени, выводим отформатированную дату
             return date.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
                 day: 'numeric', month: 'long', year: 'numeric'
             });
         }
 
-        // Вспомогательная функция для получения текущего языка
         function getLanguage() {
             return localStorage.getItem('site_lang') || 'ru';
         }
 
         const list = document.getElementById('notes-list');
+        let allNotesData = []; // Храним загруженные данные
+
+        // Загрузка данных
         list.innerHTML = '<div class="text-center text-gray-400 py-10">Loading timeline...</div>';
-        
         loadGoogleSheet('notes').then(notes => {
+            allNotesData = notes;
+            renderNotes(allNotesData); // Рисуем всё сразу
+        });
+
+        // === ФУНКЦИЯ ФИЛЬТРАЦИИ ===
+        function setFilter(filterType) {
+            // Обновляем стили кнопок
+            const buttons = ['all', 'brain', 'observation', 'thoughts'];
+            buttons.forEach(btn => {
+                const el = document.getElementById(`filter-${btn}`);
+                if (btn === filterType) {
+                    // Активная кнопка
+                    el.className = "px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm bg-emerald-600 text-white hover:bg-emerald-700";
+                } else {
+                    // Неактивная кнопка
+                    el.className = "px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-slate-700 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400";
+                }
+            });
+
+            // Фильтруем данные
+            if (filterType === 'all') {
+                renderNotes(allNotesData);
+            } else {
+                const filtered = allNotesData.filter(note => {
+                    const t = note.type;
+                    if (filterType === 'brain') return t === 'progress' || t === 'brain';
+                    if (filterType === 'observation') return t === 'image' || t === 'idea';
+                    if (filterType === 'thoughts') return t === 'text' || t === 'note';
+                    return false;
+                });
+                renderNotes(filtered);
+            }
+        }
+
+        // === ФУНКЦИЯ ОТРИСОВКИ ===
+        function renderNotes(notes) {
             list.innerHTML = '';
+            
+            if (notes.length === 0) {
+                // Текст "Нет заметок" переводим вручную в зависимости от текущего языка
+                const noNotesText = getLanguage() === 'ru' ? 'Нет заметок в этой категории.' : 'No notes in this category.';
+                list.innerHTML = `<div class="text-center text-gray-400 py-10 fade-in-up">${noNotesText}</div>`;
+                return;
+            }
+
             notes.forEach((note, index) => {
                 let contentHtml = '';
                 let iconSvg = '';
                 
-                // Выбор иконки и контента в зависимости от типа
-                if (note.type === 'progress') {
-                    iconSvg = `<svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`;
-                    contentHtml = `
+                // Логика иконок
+                if (note.type === 'progress' || note.type === 'brain') {
+                    // МОЗГ
+                    iconSvg = `<svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`;
+                    if (note.percent) {
+                         contentHtml = `
                         <div class="mt-4">
                             <div class="flex justify-between text-sm font-semibold mb-1 text-gray-600 dark:text-slate-400">
-                                <span>Progress</span>
+                                <span>Status</span>
                                 <span class="text-emerald-600 dark:text-emerald-400">${note.percent}%</span>
                             </div>
                             <div class="w-full bg-gray-100 dark:bg-slate-700 rounded-full h-3 overflow-hidden shadow-inner">
                                 <div class="bg-gradient-to-r from-emerald-500 to-emerald-400 h-3 rounded-full transition-all duration-1000 ease-out" style="width: ${note.percent}%"></div>
                             </div>
                         </div>`;
-                } else if (note.type === 'image') {
-                    iconSvg = `<svg class="w-5 h-5 text-purple-500 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`;
-                    contentHtml = `
+                    }
+                } else if (note.type === 'image' || note.type === 'idea') {
+                    // ЛАМПОЧКА
+                    iconSvg = `<svg class="w-5 h-5 text-yellow-500 dark:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`;
+                    if (note.image) {
+                        contentHtml = `
                         <div class="mt-5 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-slate-700">
                             <img src="${note.image}" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700" alt="${note.title}">
                         </div>`;
+                    }
                 } else {
-                    iconSvg = `<svg class="w-5 h-5 text-amber-500 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`;
+                    // ЗАМЕТКА
+                    iconSvg = `<svg class="w-5 h-5 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`;
                 }
 
-                // Чередование сторон для десктопа (md:flex-row vs md:flex-row-reverse)
                 const isEven = index % 2 === 0;
                 const containerClass = isEven ? 'md:flex-row' : 'md:flex-row-reverse';
                 const dateClass = isEven ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12';
                 const cardClass = isEven ? 'md:ml-12' : 'md:mr-12';
                 
-                // ЛОГИКА СТРЕЛОЧКИ (ИСПРАВЛЕНО: добавлен сброс md:left-auto)
-                const arrowPositionClass = isEven 
-                    ? '-left-2 md:-left-2' // Четная (справа) -> стрелка слева
-                    : '-left-2 md:left-auto md:-right-2'; // Нечетная (слева) -> стрелка справа
-                    
-                const arrowBorderClass = isEven 
-                    ? 'border-l border-b' 
-                    : 'md:border-l-0 md:border-b-0 md:border-r md:border-t border-l border-b';
+                // Стиль диалога
+                const bubbleShapeClass = isEven ? 'rounded-tl-none md:rounded-tl-none' : 'rounded-tr-none md:rounded-tr-none';
+                const arrowPositionClass = isEven ? '-left-2 md:-left-2' : '-left-2 md:left-auto md:-right-2'; 
+                const arrowBorderClass = isEven ? 'border-l border-b' : 'md:border-l-0 md:border-b-0 md:border-r md:border-t border-l border-b';
 
-                // Получаем красивый перевод типа заметки
                 const typeText = typeTranslations[lang][note.type] || note.type;
-
-                // Вычисляем относительную дату
                 const displayDate = formatRelativeDate(note.date);
 
                 list.innerHTML += `
-                    <div class="relative flex flex-col items-center ${containerClass} md:justify-between group fade-in-up" style="animation-delay: ${index * 150}ms">
-                        
-                        <div class="absolute left-8 md:left-1/2 w-8 h-8 rounded-full border-4 border-white dark:border-slate-900 bg-white dark:bg-slate-800 flex items-center justify-center shadow-md z-10 transform -translate-x-1/2 md:translate-x-[calc(-50%+0.5px)] transition-transform duration-300 group-hover:scale-110">
+                    <div class="relative flex flex-col items-center ${containerClass} md:justify-between group fade-in-up" style="animation-delay: ${index * 100}ms">
+                        <div class="absolute left-8 md:left-1/2 w-12 h-12 rounded-full border-4 border-white dark:border-slate-900 bg-white dark:bg-slate-800 flex items-center justify-center shadow-md z-10 transform -translate-x-1/2 md:translate-x-[calc(-50%+0.5px)] transition-transform duration-300 group-hover:scale-110 group-hover:border-emerald-200 dark:group-hover:border-emerald-800">
                             ${iconSvg}
                         </div>
-
                         <div class="w-full md:w-1/2 pl-20 md:pl-0 ${dateClass} mb-2 md:mb-0">
-                            <span class="text-lg md:text-xl font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-300 group-hover:text-emerald-500 shadow-sm bg-white/80 dark:bg-slate-900/80 rounded px-2 backdrop-blur-sm">${displayDate}</span>
+                            <span class="text-sm font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-300 group-hover:text-emerald-500 shadow-sm bg-white/60 dark:bg-slate-900/60 rounded px-2 backdrop-blur-sm border border-gray-100 dark:border-slate-800">${displayDate}</span>
                         </div>
-
                         <div class="w-full md:w-1/2 pl-16 md:pl-0">
-                            <div class="${cardClass} bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 relative">
-                                <div class="absolute top-6 w-4 h-4 bg-white dark:bg-slate-800 transform rotate-45 border-gray-100 dark:border-slate-700 ${arrowPositionClass} ${arrowBorderClass}"></div>
-
+                            <div class="${cardClass} ${bubbleShapeClass} bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 relative">
+                                <div class="absolute top-0 w-4 h-4 bg-white dark:bg-slate-800 transform rotate-45 border-gray-100 dark:border-slate-700 ${arrowPositionClass} ${arrowBorderClass} mt-6"></div>
                                 <div class="flex items-center gap-2 mb-2">
                                     <span class="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400 uppercase tracking-wide">${typeText}</span>
                                 </div>
@@ -346,7 +400,7 @@
                     </div>
                 `;
             });
-        });
+        }
 
         const overlay = document.getElementById('search-overlay'); const input = document.getElementById('search-input'); const resultsContainer = document.getElementById('search-results');
         function openSearch() { overlay.classList.remove('hidden'); setTimeout(() => { overlay.classList.remove('opacity-0'); input.focus(); }, 50); document.body.style.overflow = 'hidden'; }

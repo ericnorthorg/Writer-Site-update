@@ -33,7 +33,15 @@
         .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .article-body p { margin-bottom: 1.5rem; line-height: 1.8; color: #cbd5e1; }
+        /* === ИСПРАВЛЕННЫЕ СТИЛИ КОНТРАСТА === */
+        .article-body p { margin-bottom: 1.5rem; line-height: 1.8; }
+        
+        /* Светлая тема: Темно-серый цвет */
+        body:not(.dark) .article-body p { color: #334155; } 
+        
+        /* Темная тема: Ярко-светлый цвет (почти белый) с принудительным приоритетом */
+        .dark .article-body p { color: #e2e8f0 !important; } 
+
         .article-body p:first-of-type::first-letter { float: left; font-size: 3.5rem; line-height: 0.8; font-weight: 700; color: #10B981; margin-right: 1rem; }
     </style>
 </head>
@@ -45,7 +53,7 @@
                 <div class="flex items-center">
                     <a href="index.html" class="flex-shrink-0 flex items-center gap-4 cursor-pointer group">
                         <svg class="w-14 h-14 transform group-hover:translate-y-[-2px] transition duration-300 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M50 5 L15 60 L50 95 L50 5 Z" class="fill-[#334155] dark:fill-[#334155] transition-colors"/>
+                            <path d="M50 5 L15 60 L50 95 L50 5 Z" class="fill-[#334155] dark:fill-[#f1f5f9] transition-colors"/>
                             <path d="M50 5 L85 60 L50 95 L50 5 Z" fill="#10B981"/>
                             <path d="M50 40 L50 85" class="stroke-white dark:stroke-slate-900 transition-colors" stroke-width="4" stroke-linecap="round"/>
                         </svg>
@@ -62,7 +70,8 @@
                     </button>
 
                      <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-600 dark:hover:border-emerald-400 transition" id="lang-btn">RU</button>
-                     <a href="index.html" class="text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-white transition" data-lang-key="nav_exit">Выход из системы →</a>
+                     
+                     <a href="books.html" class="text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-white transition" data-lang-key="nav_exit">Назад к книгам →</a>
                 </div>
             </div>
         </div>
@@ -86,20 +95,20 @@
             <div id="reader-view" class="hidden max-w-3xl mx-auto fade-in-up">
                 <div class="mb-10 text-center">
                     <span id="post-tag" class="text-emerald-500 font-mono text-xs uppercase tracking-widest border border-emerald-500/30 px-2 py-1 rounded">TAG</span>
-                    <h1 id="post-title" class="text-3xl sm:text-4xl font-bold text-white mt-4 serif-font">...</h1>
+                    <h1 id="post-title" class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mt-4 serif-font">...</h1>
                 </div>
-                <div class="rounded-xl overflow-hidden shadow-lg border border-slate-700 mb-10">
-                    <img id="post-image" src="" class="w-full h-64 object-cover opacity-80">
+                <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-slate-700 mb-10">
+                    <img id="post-image" src="" class="w-full h-64 object-cover opacity-90 dark:opacity-80">
                 </div>
                 
-                <div id="post-content" class="article-body text-lg text-slate-300"></div>
+                <div id="post-content" class="article-body text-lg text-gray-800 dark:text-slate-200"></div>
                 
-                <div class="mt-16 pt-8 border-t border-slate-800">
+                <div class="mt-16 pt-8 border-t border-gray-200 dark:border-slate-800">
                     <div class="flex justify-between items-center text-sm font-mono">
                         <div id="prev-chapter-container">
                             </div>
                         
-                        <a href="hidden.html" class="text-gray-500 hover:text-white transition flex items-center">
+                        <a href="hidden.html" class="text-gray-500 hover:text-emerald-600 dark:hover:text-white transition flex items-center">
                             <span class="mr-2">■</span> <span data-lang-key="return_archive">АРХИВ</span>
                         </a>
 
@@ -141,7 +150,7 @@
 
         const translations = {
             ru: { 
-                nav_exit: "Выход из системы →", 
+                nav_exit: "Назад к книгам →", 
                 access_msg: "Доступ Разрешен", 
                 page_title: "Протокол Безопасности", 
                 page_subtitle: "Черновики, удаленные сцены и материалы 'в работе'.", 
@@ -153,7 +162,7 @@
                 filter_all: "ВСЕ МАТЕРИАЛЫ"
             },
             en: { 
-                nav_exit: "System Logout →", 
+                nav_exit: "Back to Books →", 
                 access_msg: "Access Granted", 
                 page_title: "The Security Protocol", 
                 page_subtitle: "Drafts, deleted scenes, and WIP materials.", 
@@ -176,7 +185,7 @@
         // === ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ===
         const params = new URLSearchParams(window.location.search);
         const postId = params.get('id');
-        let allHiddenPosts = []; // Храним все посты глобально
+        let allHiddenPosts = [];
 
         const listView = document.getElementById('list-view');
         const readerView = document.getElementById('reader-view');
@@ -189,16 +198,14 @@
             allHiddenPosts = posts;
             
             if (postId) {
-                // Если есть ID, сразу открываем читалку
                 renderReader(posts, postId);
             } else {
-                // Иначе показываем фильтры и список
                 renderFilters(posts);
                 renderList(posts);
             }
         });
 
-        // 1. ГЕНЕРАЦИЯ ФИЛЬТРОВ (ПО НАЗВАНИЮ КНИГ/ТЕГАМ)
+        // 1. ГЕНЕРАЦИЯ ФИЛЬТРОВ
         function renderFilters(posts) {
             const tags = ['All', ...new Set(posts.map(p => p.tag))];
             const allText = translations[lang]['filter_all'];
@@ -215,7 +222,6 @@
         }
 
         function filterHiddenPosts(selectedTag) {
-            // Обновляем стили кнопок
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if (btn.dataset.tag === selectedTag) {
                     btn.className = 'filter-btn px-4 py-2 rounded-full text-xs font-mono uppercase tracking-widest transition duration-300 border bg-emerald-600 border-emerald-600 text-white';
@@ -231,7 +237,7 @@
             renderList(filtered);
         }
 
-        // 2. ОТОБРАЖЕНИЕ СПИСКА (СЕТКА)
+        // 2. ОТОБРАЖЕНИЕ СПИСКА
         function renderList(posts) {
             listView.classList.remove('hidden');
             readerView.classList.add('hidden');
@@ -267,12 +273,12 @@
             });
         }
 
-        // 3. ОТОБРАЖЕНИЕ ЧИТАЛКИ (И НАВИГАЦИЯ ПО ГЛАВАМ)
+        // 3. ОТОБРАЖЕНИЕ ЧИТАЛКИ
         function renderReader(posts, id) {
             const post = posts.find(p => p.id === id);
             
             if (!post) {
-                renderFilters(posts); // Показываем фильтры если пост не найден
+                renderFilters(posts);
                 renderList(posts);
                 return;
             }
@@ -294,18 +300,11 @@
                 img.parentElement.style.display = 'none';
             }
 
-            // === ЛОГИКА СОСЕДНИХ ГЛАВ ===
-            // 1. Фильтруем только главы ЭТОЙ книги (по тегу)
             const currentBookChapters = posts.filter(p => p.tag === post.tag);
-            
-            // 2. Находим индекс текущей главы
             const currentIndex = currentBookChapters.findIndex(p => p.id === id);
-            
-            // 3. Рендерим кнопки
             const prevContainer = document.getElementById('prev-chapter-container');
             const nextContainer = document.getElementById('next-chapter-container');
             
-            // Кнопка "Назад"
             if (currentIndex > 0) {
                 const prevPost = currentBookChapters[currentIndex - 1];
                 prevContainer.innerHTML = `
@@ -317,7 +316,6 @@
                 prevContainer.innerHTML = '';
             }
 
-            // Кнопка "Вперед"
             if (currentIndex < currentBookChapters.length - 1) {
                 const nextPost = currentBookChapters[currentIndex + 1];
                 nextContainer.innerHTML = `

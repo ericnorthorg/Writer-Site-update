@@ -74,6 +74,7 @@
                     </a>
 
                     <nav class="hidden md:ml-12 md:flex space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_index">Главная</a>
                         <a href="blog.html" class="text-emerald-600 dark:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_blog">Истории</a>
                         <a href="books.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_books">Книги</a>
                         <a href="announcements.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition" data-lang-key="nav_notes">Заметки</a>
@@ -179,8 +180,8 @@
         }
 
         const translations = {
-            ru: { nav_blog: "Истории", nav_books: "Книги", nav_notes: "Заметки", btn_subscribe: "Подписаться", page_title: "Хроники", page_subtitle: "Заметки о мирах, которые могли бы существовать.", toast_copied: "Ссылка скопирована!", all_stories: "Все истории" },
-            en: { nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", btn_subscribe: "Subscribe", page_title: "Chronicles", page_subtitle: "Notes on worlds that could exist.", toast_copied: "Link copied!", all_stories: "All Stories" }
+            ru: { nav_index: "Главная", nav_blog: "Истории", nav_books: "Книги", nav_notes: "Заметки", btn_subscribe: "Подписаться", page_title: "Хроники", page_subtitle: "Заметки о мирах, которые могли бы существовать.", toast_copied: "Ссылка скопирована!", all_stories: "Все истории" },
+            en: { nav_index: "Home", nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", btn_subscribe: "Subscribe", page_title: "Chronicles", page_subtitle: "Notes on worlds that could exist.", toast_copied: "Link copied!", all_stories: "All Stories" }
         };
 
         const lang = localStorage.getItem('site_lang') || 'ru';

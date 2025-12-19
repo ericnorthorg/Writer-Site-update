@@ -24,7 +24,7 @@ const myBooks_ru = [
         price: "Бесплатно",
         color: "bg-stone-600",
         tag: "Доп. материалы",
-        link: "post.html?id=fantasy-roots"
+        link: "#"
     }
 ];
 
@@ -54,6 +54,6 @@ const myBooks_en = [
         price: "Free",
         color: "bg-stone-600",
         tag: "Extras",
-        link: "post.html?id=fantasy-roots"
+        link: "#"
     }
 ];
