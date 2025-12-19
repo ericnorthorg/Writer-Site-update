@@ -32,9 +32,18 @@
         .serif-font { font-family: 'Lora', serif; }
         .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Паттерн точек для заполнения пустоты */
+        .dot-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .dark .dot-pattern {
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-slate-300 antialiased flex flex-col min-h-screen transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-slate-300 antialiased flex flex-col min-h-screen transition-colors duration-300 dot-pattern">
 
     <header class="fixed w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-50 border-b border-gray-100 dark:border-slate-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,13 +104,18 @@
     </header>
 
     <main class="pt-32 pb-20 flex-grow transition-colors duration-300">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in-up">
                 <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl serif-font mb-4" data-lang-key="page_title">Рабочий журнал</h1>
-                <p class="text-xl text-gray-500 dark:text-slate-400" data-lang-key="page_subtitle">Мысли, прогресс и спонтанные идеи.</p>
+                <p class="text-xl text-gray-500 dark:text-slate-400 max-w-2xl mx-auto" data-lang-key="page_subtitle">Мысли, прогресс и спонтанные идеи.</p>
             </div>
             
-            <div id="notes-list" class="space-y-12 border-l-2 border-gray-200 dark:border-slate-700 ml-4 md:ml-0 pl-8 md:pl-0 transition-colors duration-300"></div>
+            <div class="relative">
+                <div class="absolute left-8 md:left-1/2 h-full w-px bg-emerald-200 dark:bg-emerald-900/50 transform md:-translate-x-1/2"></div>
+                
+                <div id="notes-list" class="space-y-6">
+                    </div>
+            </div>
         </div>
     </main>
 
@@ -167,32 +181,80 @@
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
         const list = document.getElementById('notes-list');
-        list.innerHTML = '<div class="pl-8 text-gray-400">Loading notes...</div>';
+        list.innerHTML = '<div class="text-center text-gray-400 py-10">Loading timeline...</div>';
         
         loadGoogleSheet('notes').then(notes => {
             list.innerHTML = '';
             notes.forEach((note, index) => {
                 let contentHtml = '';
-                if (note.type === 'progress') {
-                    // Адаптация прогресс-бара для темной темы
-                    contentHtml = `<div class="mt-4 w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5 overflow-hidden"><div class="bg-emerald-600 h-2.5 rounded-full" style="width: ${note.percent}%"></div></div><p class="text-xs text-emerald-700 dark:text-emerald-400 font-bold mt-2 uppercase tracking-wider">${note.percent}% Complete</p>`;
-                } else if (note.type === 'image') {
-                    contentHtml = `<div class="mt-4 rounded-xl overflow-hidden shadow-md"><img src="${note.image}" class="w-full h-auto" alt="Note Image"></div>`;
-                }
+                let iconSvg = '';
                 
+                // Выбор иконки и контента в зависимости от типа
+                if (note.type === 'progress') {
+                    iconSvg = `<svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`;
+                    contentHtml = `
+                        <div class="mt-4">
+                            <div class="flex justify-between text-sm font-semibold mb-1 text-gray-600 dark:text-slate-400">
+                                <span>Progress</span>
+                                <span class="text-emerald-600 dark:text-emerald-400">${note.percent}%</span>
+                            </div>
+                            <div class="w-full bg-gray-100 dark:bg-slate-700 rounded-full h-3 overflow-hidden shadow-inner">
+                                <div class="bg-gradient-to-r from-emerald-500 to-emerald-400 h-3 rounded-full transition-all duration-1000 ease-out" style="width: ${note.percent}%"></div>
+                            </div>
+                        </div>`;
+                } else if (note.type === 'image') {
+                    iconSvg = `<svg class="w-5 h-5 text-purple-500 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`;
+                    contentHtml = `
+                        <div class="mt-5 rounded-xl overflow-hidden shadow-md group-hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-slate-700">
+                            <img src="${note.image}" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700" alt="${note.title}">
+                        </div>`;
+                } else {
+                    iconSvg = `<svg class="w-5 h-5 text-amber-500 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`;
+                }
+
+                // Чередование сторон
+                const isEven = index % 2 === 0;
+                const containerClass = isEven ? 'md:flex-row' : 'md:flex-row-reverse';
+                const dateClass = isEven ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12';
+                const cardClass = isEven ? 'md:ml-12' : 'md:mr-12';
+                
+                // ЛОГИКА СТРЕЛОЧКИ (ИСПРАВЛЕНА + УЧЕТ ПЛОТНОСТИ)
+                const arrowPositionClass = isEven 
+                    ? '-left-2 md:-left-2' // Четная (справа) -> стрелка слева
+                    : '-left-2 md:-right-2'; // Нечетная (слева) -> стрелка справа
+                    
+                const arrowBorderClass = isEven 
+                    ? 'border-l border-b' 
+                    : 'md:border-l-0 md:border-b-0 md:border-r md:border-t border-l border-b';
+
                 list.innerHTML += `
-                    <div class="relative pl-8 md:pl-12 py-2 fade-in-up group" style="animation-delay: ${index * 150}ms">
-                        <div class="absolute -left-[9px] top-3 w-4 h-4 rounded-full border-4 border-white dark:border-slate-900 bg-gray-300 dark:bg-slate-600 group-hover:bg-emerald-500 transition duration-300 shadow-sm"></div>
-                        <span class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-1 block">${note.date}</span>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition serif-font">${note.title}</h3>
-                        <p class="mt-2 text-gray-600 dark:text-slate-400 leading-relaxed">${note.desc}</p>
-                        ${contentHtml}
+                    <div class="relative flex flex-col items-center ${containerClass} md:justify-between group fade-in-up" style="animation-delay: ${index * 150}ms">
+                        
+                        <div class="absolute left-8 md:left-1/2 w-8 h-8 rounded-full border-4 border-white dark:border-slate-900 bg-white dark:bg-slate-800 flex items-center justify-center shadow-md z-10 transform -translate-x-1/2 md:translate-x-[calc(-50%+0.5px)] transition-transform duration-300 group-hover:scale-110">
+                            ${iconSvg}
+                        </div>
+
+                        <div class="w-full md:w-1/2 pl-20 md:pl-0 ${dateClass} mb-2 md:mb-0">
+                            <span class="text-lg md:text-xl font-bold text-gray-300 dark:text-slate-600 uppercase tracking-widest transition-colors duration-300 group-hover:text-emerald-500">${note.date}</span>
+                        </div>
+
+                        <div class="w-full md:w-1/2 pl-16 md:pl-0">
+                            <div class="${cardClass} bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 relative">
+                                <div class="absolute top-6 w-4 h-4 bg-white dark:bg-slate-800 transform rotate-45 border-gray-100 dark:border-slate-700 ${arrowPositionClass} ${arrowBorderClass}"></div>
+
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400 uppercase tracking-wide">${note.type}</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 serif-font group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">${note.title}</h3>
+                                <p class="text-gray-600 dark:text-slate-300 leading-relaxed text-sm">${note.desc}</p>
+                                ${contentHtml}
+                            </div>
+                        </div>
                     </div>
                 `;
             });
         });
 
-        // Поиск (стандарт)
         const overlay = document.getElementById('search-overlay'); const input = document.getElementById('search-input'); const resultsContainer = document.getElementById('search-results');
         function openSearch() { overlay.classList.remove('hidden'); setTimeout(() => { overlay.classList.remove('opacity-0'); input.focus(); }, 50); document.body.style.overflow = 'hidden'; }
         function closeSearch() { overlay.classList.add('opacity-0'); setTimeout(() => { overlay.classList.add('hidden'); input.value = ''; resultsContainer.innerHTML = ''; }, 300); document.body.style.overflow = ''; }
