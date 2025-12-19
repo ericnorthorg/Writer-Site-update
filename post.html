@@ -12,7 +12,6 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    // Настраиваем шрифты здесь: font-serif будет использовать Lora
                     fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Lora', 'serif'] }
                 }
             }
@@ -52,6 +51,30 @@
         .dark .article-content h3 { color: #f1f5f9; } /* slate-100 */
         .dark .article-content blockquote { background: #1e293b; color: #94a3b8; } /* bg-slate-800 */
         .dark .article-content hr { border-color: #334155; }
+
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #10B981;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
     </style>
 </head>
 <body class="bg-white dark:bg-slate-900 text-gray-800 dark:text-slate-300 antialiased flex flex-col min-h-screen transition-colors duration-300">
@@ -112,6 +135,17 @@
             </div>
             
             <div id="post-content" class="article-content article-body"></div>
+
+            <div class="border-t border-b border-gray-100 dark:border-slate-800 py-8 my-12 transition-colors duration-300">
+                <div class="text-center">
+                    <p class="text-xs font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest mb-4" data-lang-key="share_txt">Поделиться историей</p>
+                    <div class="flex items-center justify-center gap-4">
+                        <button onclick="copyCurrentLink()" class="p-3 rounded-full bg-gray-50 text-gray-500 shadow-sm transition-all duration-300 transform hover:scale-110 hover:bg-emerald-600 hover:text-white hover:shadow-lg hover:shadow-emerald-500/30 dark:bg-slate-800 dark:text-gray-400 dark:hover:bg-emerald-500 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
             
             <div class="flex items-center justify-center my-16 opacity-30">
                 <div class="w-2 h-2 bg-gray-400 dark:bg-slate-600 rounded-full mx-1"></div>
@@ -124,6 +158,8 @@
             </div>
         </article>
     </main>
+    
+    <div id="toast">Link copied to clipboard!</div>
 
     <footer class="bg-emerald-900 text-white border-t border-emerald-800 mt-auto">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -175,8 +211,24 @@
         }
 
         const translations = {
-            ru: { nav_back: "← Назад", read_more_btn: "Читать другие записи", nav_blog: "Истории", nav_books: "Книги", btn_subscribe: "Подписаться" },
-            en: { nav_back: "← Back", read_more_btn: "Read more stories", nav_blog: "Stories", nav_books: "Books", btn_subscribe: "Subscribe" }
+            ru: { 
+                nav_back: "← Назад", 
+                read_more_btn: "Читать другие записи", 
+                nav_blog: "Истории", 
+                nav_books: "Книги", 
+                btn_subscribe: "Подписаться",
+                share_txt: "Поделиться историей",
+                toast_copied: "Ссылка скопирована!"
+            },
+            en: { 
+                nav_back: "← Back", 
+                read_more_btn: "Read more stories", 
+                nav_blog: "Stories", 
+                nav_books: "Books", 
+                btn_subscribe: "Subscribe",
+                share_txt: "Share this story",
+                toast_copied: "Link copied to clipboard!"
+            }
         };
 
         const lang = localStorage.getItem('site_lang') || 'ru';
@@ -213,6 +265,8 @@
                     } else {
                         img.style.display = 'none';
                     }
+                    // Обновляем ссылки для шаринга после загрузки контента
+                    updateShareLinks(post.title);
                 } else {
                     document.getElementById('post-title').innerText = (lang === 'ru') ? "История не найдена" : "Story not found";
                     document.getElementById('post-content').innerHTML = "<p class='text-center text-gray-400 mt-10 text-xl'>404</p>";
@@ -225,6 +279,26 @@
         }
         
         loadAndFindPost();
+
+        // === SHARE FUNCTIONALITY ===
+        function updateShareLinks(title) {
+            // Функция оставлена пустой, так как кнопки соцсетей удалены
+        }
+
+        function copyCurrentLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast();
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.innerText = translations[lang]['toast_copied'];
+            toast.className = 'show';
+            setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 3000);
+        }
 
         // Поиск
         const overlay = document.getElementById('search-overlay'); const input = document.getElementById('search-input'); const resultsContainer = document.getElementById('search-results');
