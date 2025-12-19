@@ -236,10 +236,10 @@
                 const dateClass = isEven ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12';
                 const cardClass = isEven ? 'md:ml-12' : 'md:mr-12';
                 
-                // ЛОГИКА СТРЕЛОЧКИ
+                // ЛОГИКА СТРЕЛОЧКИ (ИСПРАВЛЕНО: добавлен сброс md:left-auto)
                 const arrowPositionClass = isEven 
-                    ? '-left-2 md:-left-2' 
-                    : '-left-2 md:-right-2'; 
+                    ? '-left-2 md:-left-2' // Четная (справа) -> стрелка слева
+                    : '-left-2 md:left-auto md:-right-2'; // Нечетная (слева) -> стрелка справа
                     
                 const arrowBorderClass = isEven 
                     ? 'border-l border-b' 
