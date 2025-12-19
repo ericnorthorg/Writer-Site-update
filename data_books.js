@@ -24,7 +24,7 @@ const myBooks_ru = [
         price: "Бесплатно",
         color: "bg-stone-600",
         tag: "Доп. материалы",
-        link: "#"
+        link: "post.html?id=post-irony-magic"
     }
 ];
 
@@ -56,5 +56,4 @@ const myBooks_en = [
         tag: "Extras",
         link: "post.html?id=post-irony-magic"
     }
-
 ];
