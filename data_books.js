@@ -54,6 +54,7 @@ const myBooks_en = [
         price: "Free",
         color: "bg-stone-600",
         tag: "Extras",
-        link: "#"
+        link: "post.html?id=post-irony-magic"
     }
+
 ];
