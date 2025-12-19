@@ -10,3 +10,4 @@ const notes_en = [
     { date: "3 days ago", type: "text", title: "Idea", desc: "What if the Security Protocol doesn't protect us from magic, but magic from us?" }
 
 ];
+
