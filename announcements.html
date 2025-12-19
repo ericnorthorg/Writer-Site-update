@@ -37,7 +37,7 @@
         .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* --- ЭФФЕКТ БУМАГИ (CRUMPLED PAPER) --- */
+        /* --- ЭФФЕКТ БУМАГИ --- */
         .crumpled-paper-bg {
             background-color: #fdfbf7;
             position: relative;
@@ -48,6 +48,7 @@
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none;
             z-index: -1;
+            /* Генерация шума через SVG фильтр */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
             opacity: 0.4;
             mix-blend-mode: multiply;
@@ -152,11 +153,18 @@
                     <a href="contact.html" class="hover:text-white transition" data-lang-key="btn_subscribe">Подписаться</a>
                 </div>
                 <div class="flex justify-center md:justify-end space-x-5">
-                    <a href="https://t.me/ВАШ_НИК" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-                    <a href="https://wa.me/ВАШ_НОМЕР" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-                    <a href="https://youtube.com/@ВАШ_КАНАЛ" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                    <a href="https://x.com/ВАШ_НИК" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                </div>
+                    <a href="https://t.me/ВАШ_НИК" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    </a>
+                    <a href="https://wa.me/ВАШ_НОМЕР" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@ВАШ_КАНАЛ" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://x.com/ВАШ_НИК" target="_blank" class="text-emerald-200 hover:text-white transition transform hover:scale-110">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -194,12 +202,70 @@
             en: { nav_blog: "Stories", nav_books: "Books", nav_notes: "Notes", btn_subscribe: "Subscribe", page_title: "Work Journal", page_subtitle: "Thoughts, progress, and spontaneous ideas." }
         };
 
+        // Словарик для перевода типов заметок (так как в JS файле они теперь на английском)
+        const typeTranslations = {
+            ru: { progress: "процесс", image: "изображение", text: "запись" },
+            en: { progress: "progress", image: "image", text: "note" }
+        };
+
         const lang = localStorage.getItem('site_lang') || 'ru';
         document.getElementById('lang-btn').innerText = lang.toUpperCase();
         document.querySelectorAll('[data-lang-key]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-lang-key')]);
         
         function toggleLanguage() { localStorage.setItem('site_lang', lang === 'ru' ? 'en' : 'ru'); location.reload(); }
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+
+        // === НОВАЯ ФУНКЦИЯ: Умное форматирование даты ===
+        function formatRelativeDate(dateString) {
+            let date;
+            const lang = getLanguage();
+
+            if (lang === 'ru') {
+                // Разбираем формат DD-MM-YYYY для русского языка
+                const parts = dateString.split('-');
+                if (parts.length === 3) {
+                    // new Date(year, monthIndex, day) - monthIndex начинается с 0
+                    date = new Date(parts[2], parts[1] - 1, parts[0]);
+                } else {
+                    date = new Date(dateString); // На всякий случай
+                }
+            } else {
+                // Для английского (и других) используем стандартный парсер (ожидает YYYY-MM-DD)
+                date = new Date(dateString);
+            }
+            
+            // Проверка на валидность даты
+            if (isNaN(date.getTime())) return dateString; // Если не смогли распарсить, возвращаем как есть
+
+            const now = new Date();
+            // Сбрасываем время для корректного сравнения дней
+            const dateMidnight = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            const nowMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+            const diffTime = nowMidnight - dateMidnight;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) return lang === 'ru' ? 'Сегодня' : 'Today';
+            if (diffDays === 1) return lang === 'ru' ? 'Вчера' : 'Yesterday';
+            
+            // Склонение дней для русского языка
+            if (lang === 'ru') {
+                if (diffDays > 1 && diffDays < 5) return `${diffDays} дня назад`;
+                if (diffDays >= 5 && diffDays < 30) return `${diffDays} дней назад`;
+            } else {
+                if (diffDays > 1 && diffDays < 30) return `${diffDays} days ago`;
+            }
+
+            // Если прошло много времени, выводим отформатированную дату
+            return date.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
+                day: 'numeric', month: 'long', year: 'numeric'
+            });
+        }
+
+        // Вспомогательная функция для получения текущего языка
+        function getLanguage() {
+            return localStorage.getItem('site_lang') || 'ru';
+        }
 
         const list = document.getElementById('notes-list');
         list.innerHTML = '<div class="text-center text-gray-400 py-10">Loading timeline...</div>';
@@ -233,7 +299,7 @@
                     iconSvg = `<svg class="w-5 h-5 text-amber-500 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`;
                 }
 
-                // Чередование сторон
+                // Чередование сторон для десктопа (md:flex-row vs md:flex-row-reverse)
                 const isEven = index % 2 === 0;
                 const containerClass = isEven ? 'md:flex-row' : 'md:flex-row-reverse';
                 const dateClass = isEven ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12';
@@ -248,6 +314,12 @@
                     ? 'border-l border-b' 
                     : 'md:border-l-0 md:border-b-0 md:border-r md:border-t border-l border-b';
 
+                // Получаем красивый перевод типа заметки
+                const typeText = typeTranslations[lang][note.type] || note.type;
+
+                // Вычисляем относительную дату
+                const displayDate = formatRelativeDate(note.date);
+
                 list.innerHTML += `
                     <div class="relative flex flex-col items-center ${containerClass} md:justify-between group fade-in-up" style="animation-delay: ${index * 150}ms">
                         
@@ -256,7 +328,7 @@
                         </div>
 
                         <div class="w-full md:w-1/2 pl-20 md:pl-0 ${dateClass} mb-2 md:mb-0">
-                            <span class="text-lg md:text-xl font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-300 group-hover:text-emerald-500 shadow-sm bg-white/80 dark:bg-slate-900/80 rounded px-2 backdrop-blur-sm">${note.date}</span>
+                            <span class="text-lg md:text-xl font-bold text-gray-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-300 group-hover:text-emerald-500 shadow-sm bg-white/80 dark:bg-slate-900/80 rounded px-2 backdrop-blur-sm">${displayDate}</span>
                         </div>
 
                         <div class="w-full md:w-1/2 pl-16 md:pl-0">
@@ -264,7 +336,7 @@
                                 <div class="absolute top-6 w-4 h-4 bg-white dark:bg-slate-800 transform rotate-45 border-gray-100 dark:border-slate-700 ${arrowPositionClass} ${arrowBorderClass}"></div>
 
                                 <div class="flex items-center gap-2 mb-2">
-                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400 uppercase tracking-wide">${note.type}</span>
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-400 uppercase tracking-wide">${typeText}</span>
                                 </div>
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 serif-font group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">${note.title}</h3>
                                 <p class="text-gray-600 dark:text-slate-300 leading-relaxed text-sm">${note.desc}</p>
