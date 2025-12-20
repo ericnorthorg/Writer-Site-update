@@ -4,6 +4,12 @@
 const notes_ru = [
     { 
         date: "19-12-2025", 
+        type: "text", 
+        title: "Иллюзия реальности", 
+        desc: "Иногда кажется, что все вокруг не настоящее.", 
+    },
+    { 
+        date: "19-12-2025", 
         type: "progress", 
         title: "Глава 7: Сбой", 
         desc: "Застрял на сцене активации артефакта. Логика магии требует жертвы.", 
@@ -26,6 +32,12 @@ const notes_ru = [
 
 // === ЗАМЕТКИ: АНГЛИЙСКИЙ ===
 const notes_en = [
+    { 
+        date: "19-12-2025", 
+        type: "text", 
+        title: "The illusion of reality", 
+        desc: "Sometimes it seems like nothing around me is real.", 
+    },
     { 
         date: "2025-12-19", 
         type: "progress", 
