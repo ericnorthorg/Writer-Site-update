@@ -36,10 +36,10 @@
         /* === ИСПРАВЛЕННЫЕ СТИЛИ КОНТРАСТА === */
         .article-body p { margin-bottom: 1.5rem; line-height: 1.8; }
         
-        /* Светлая тема: Темно-серый цвет */
+        /* Светлая тема */
         body:not(.dark) .article-body p { color: #334155; } 
         
-        /* Темная тема: Ярко-светлый цвет (почти белый) с принудительным приоритетом */
+        /* Темная тема: Ярко-светлый цвет */
         .dark .article-body p { color: #e2e8f0 !important; } 
 
         .article-body p:first-of-type::first-letter { float: left; font-size: 3.5rem; line-height: 0.8; font-weight: 700; color: #10B981; margin-right: 1rem; }
@@ -50,19 +50,22 @@
     <header class="fixed w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-50 border-b border-gray-100 dark:border-slate-800 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex-shrink-0 flex items-center gap-4 cursor-pointer group">
-                        <svg class="w-14 h-14 transform group-hover:translate-y-[-2px] transition duration-300 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="flex items-center min-w-0">
+                    <a href="index.html" class="flex-shrink-0 flex items-center gap-2 md:gap-4 cursor-pointer group min-w-0">
+                        <svg class="w-10 h-10 md:w-14 md:h-14 transform group-hover:translate-y-[-2px] transition duration-300 drop-shadow-sm flex-shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M50 5 L15 60 L50 95 L50 5 Z" class="fill-[#334155] dark:fill-[#f1f5f9] transition-colors"/>
                             <path d="M50 5 L85 60 L50 95 L50 5 Z" fill="#10B981"/>
                             <path d="M50 40 L50 85" class="stroke-white dark:stroke-slate-900 transition-colors" stroke-width="4" stroke-linecap="round"/>
                         </svg>
-                        <span class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition serif-font">Eric North</span>
+                        <span class="font-bold text-xl md:text-2xl tracking-tight text-gray-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition serif-font truncate">Eric North</span>
                     </a>
                 </div>
 
-                <div class="flex items-center gap-4">
-                     <a href="hidden.html" id="back-to-list-btn" class="hidden text-sm font-mono text-emerald-600 dark:text-emerald-400 hover:underline transition" data-lang-key="back_to_list">← НАЗАД К СПИСКУ</a>
+                <div class="flex items-center gap-2 md:gap-4 flex-shrink-0">
+                     <a href="hidden.html" id="back-to-list-btn" class="hidden text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition items-center">
+                        <svg class="w-6 h-6 md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        <span class="hidden md:inline text-sm font-mono hover:underline" data-lang-key="back_to_list">← НАЗАД К СПИСКУ</span>
+                     </a>
                      
                      <button onclick="toggleTheme()" class="p-2 text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition rounded-full hover:bg-gray-100 dark:hover:bg-slate-800">
                         <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -71,7 +74,10 @@
 
                      <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-600 dark:hover:border-emerald-400 transition" id="lang-btn">RU</button>
                      
-                     <a href="books.html" class="text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-white transition" data-lang-key="nav_exit">Назад к книгам →</a>
+                     <a href="books.html" class="text-gray-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-white transition items-center flex">
+                        <svg class="w-6 h-6 md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        <span class="hidden md:inline text-sm font-medium" data-lang-key="nav_exit">Назад к книгам →</span>
+                     </a>
                 </div>
             </div>
         </div>
@@ -242,6 +248,7 @@
             listView.classList.remove('hidden');
             readerView.classList.add('hidden');
             backBtn.classList.add('hidden');
+            backBtn.classList.remove('flex'); // Ensure flex is removed when hidden
 
             if (posts.length === 0) {
                 grid.innerHTML = '<div class="col-span-2 text-center text-gray-500 dark:text-slate-600 font-mono py-10">No data found.</div>';
@@ -286,6 +293,7 @@
             listView.classList.add('hidden');
             readerView.classList.remove('hidden');
             backBtn.classList.remove('hidden');
+            backBtn.classList.add('flex'); // Add flex back for proper alignment
 
             document.title = post.title + " | Protocol";
             document.getElementById('post-title').innerText = post.title;
