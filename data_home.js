@@ -63,7 +63,7 @@ const indexData_en = [
     {
         type: "text_media",
         layout: "left",
-        title: "Flagship Project: 'The Security Protocol'",
+        title: "Ambitious Project: 'The Security Protocol'",
         text: "The story I am working on right now. A world where connection between humans has become a dangerous energy. 6 chapters are written. You can peek into the drafts and see how a book is born.",
         image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
         buttons: [{ text: "View Project", link: "books.html", style: "green" }]
