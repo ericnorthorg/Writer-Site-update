@@ -3,6 +3,7 @@ const blogPosts_ru = [
         id: "test-post",
         title: "Просто тестирую очередной пост",
         tag: "Тест",
+        featured: true, // <--- ДОБАВЛЕНО
         date: "18 Декабря 2025",
         image: "images/pexels-njeromin-12627131.jpg",
         desc: "Мы мечтаем загрузить сознание в облако. Но мы забываем, что без дедлайна любой проект превращается в бесконечный долгострой.",
@@ -147,6 +148,7 @@ const blogPosts_en = [
         id: "post-immortality",
         title: "The Curse of Eternity: Why Death is a Feature",
         tag: "Philosophy",
+        featured: true, // <--- ADDED
         date: "December 20, 2025",
         image: "images/soul-disconnection.jpg",
 
