@@ -178,6 +178,58 @@ const hiddenPosts_ru = [
             <p>Я попытался пошевелиться, и боль пронзила все тело. Дверь заклинило. Смятый металл превратил машину в стальной гроб.</p>
             <p>Сквозь проем разбитого окна, перевернутый вверх ногами, я увидел, как к машине приближаются они. Три тени. Они больше не спешили. Они плыли над асфальтом, не касаясь земли, и от них исходил холод — мертвый холод глубокого космоса, от которого иней начал покрывать остатки стекла прямо на моих глазах.</p>
         `
+    },
+    {
+        id: "chapter-4-shadow",
+        title: "Глава 4. Вторая тень",
+        tag: "Протокол Безопасности",
+        date: "18 Декабря 2025",
+        image: "images/grok-ruins.jpg",
+        desc: "Спасение в последний момент, человек с ножом и прыжок в стену.",
+        content: `
+            <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+            Кровь заливала мне левый глаз, теплая и липкая, смешиваясь с грязью на щеке. Я висел в перевернутой машине, как насекомое в банке, и смотрел на приближающуюся смерть.
+            </p>
+            <p>Они — теперь я видел их отчетливее — не имели лиц. Там, где должны быть глаза и рот, клубилась пустота, более плотная, чем окружающая ночь. Но я чувствовал их внимание. Голодное, изучающее внимание. Они не просто хотели убить меня. Они хотели забрать то, что зажглось во мне секунду назад.</p>
+            <p>Воздух вокруг машины стал ледяным. Мое дыхание вырывалось изо рта густыми облачками пара.</p>
+            <p>«Ну вот и всё, Марк», — пронеслось в голове.</p>
+            <p>Ближайшая тень подняла руку — или то, что служило ей конечностью. Тьма вытянулась в длинное, острое лезвие.</p>
+            <p>И в этот момент воздух разорвал звук, похожий на удар хлыста, только в сотню раз громче.</p>
+            <p>Тень, занесшая лезвие, дернулась, словно от удара невидимым тараном, и ее отбросило назад, в темноту. Раздался шипящий, скрежещущий вой — звук, который не могло издать ни одно земное существо.</p>
+            <p>В поле моего перевернутого зрения появились ботинки. Тяжелые, грубые, военного образца.</p>
+            <p>Кто-то присел на корточки перед разбитым окном. Я увидел лицо — перевернутое, но запоминающееся. Жесткие черты, шрам над бровью и глаза, в которых не было ни капли страха. Только холодный, тактический расчет. Он смотрел на меня не как на человека, а как на ценный груз, который нужно извлечь любой ценой.</p>
+            <p>— Ну ты и пошумел, парень, — голос незнакомца был низким, спокойным, пробивающимся сквозь звон в моих ушах. — Ты фонишь на весь район. Как новогодняя елка среди леса.</p>
+            <p>— Дверь... — прохрипел я, сплевывая кровь. — Не... открывается...</p>
+            <p>Он даже не посмотрел на замок. Незнакомец уперся ногами в крышу машины (которая сейчас была полом), схватился руками за покореженный край дверной рамы и... просто потянул.</p>
+            <p>Металл заскрипел, застонал, словно живой. Я с ужасом смотрел, как стальные петли лопаются с сухим треском. Этот человек — или не человек? — вырвал дверь с мясом, отшвырнув её в сторону, как картонку.</p>
+            <p>— Режь! — он сунул мне в руку что-то холодное и острое. Нож.</p>
+            <p>Я дрожащими пальцами нащупал стропу ремня безопасности и полоснул по ней. Гравитация тут же вступила в свои права — я рухнул вниз, на крышу салона, прямо в осколки стекла.</p>
+            <p>— Вставай! Живее! — его рука схватила меня за шиворот и рывком выдернула наружу.</p>
+            <p>Ноги подогнулись, но он не дал мне упасть.</p>
+            <p>— Они сейчас перегруппируются. У нас секунд тридцать, пока они латают структуру.</p>
+            <p>Я посмотрел туда, куда отлетела тень. Пустота там сгущалась, принимая новую форму.</p>
+            <p>— Кто... кто ты? — выдохнул я.</p>
+            <p>— Эрик. Вопросы потом. Беги, если хочешь жить.</p>
+            <p>И мы побежали.</p>
+            <p>Бег с контузией — это особый вид пытки. Мир качался, асфальт норовил ударить в лицо. Эрик тащил меня, практически не сбавляя темпа, выбирая самые темные, самые узкие проходы между домами.</p>
+            <p>Мы петляли по дворам, перепрыгивали через низкие заборы. Я слышал позади странный звук — не шаги, а скорее шелест, будто тысячи сухих листьев волокли по земле. Они шли по следу.</p>
+            <p>— Туда! — Эрик резко свернул в глухой тупик.</p>
+            <p>— Там стена! — закричал я, пытаясь затормозить. Перед нами была кирпичная кладка, заваленная мусорными баками.</p>
+            <p>— Нет, Марк. Там выход.</p>
+            <p>Тот, кто назвался Эриком, даже не замедлился. Он влетел в самую густую тень в углу тупика и... исчез.</p>
+            <p>Я замер на долю секунды. Шелест за спиной превратился в гул. Я обернулся и увидел, как тьма в начале переулка встает волной, готовясь накрыть нас.</p>
+            <p>Выбора не было. Я зажмурился и шагнул в стену, туда, где исчез Эрик.</p>
+            <p>Ожидаемого удара не последовало.</p>
+            <p>Земля исчезла. Запахи города — гарь, мусор, выхлопы — обрезало, как ножом. Вместо этого меня накрыло ощущением свободного падения в ледяной воде. Желудок скрутило спазмом, внутренности словно пытались поменяться местами. Запахи озона, электричества и сырой земли ударили в нос.</p>
+            <p>«Шрам», — неизвестно откуда всплыло в голове слово, которого я раньше не знал.</p>
+            <p>Это длилось мгновение, но показалось вечностью. Меня выплюнуло на твердую поверхность. Я упал на колени, жадно хватая ртом воздух, пытаясь унять тошноту.</p>
+            <p>— Дыши, — голос Эрика звучал совсем рядом. — Первый раз всегда так.</p>
+            <p>Я открыл глаза. И забыл, как дышать.</p>
+            <p>Надо мной не было узкой полоски городского неба, зажатой между многоэтажками. Надо мной расстилался бесконечный, фиолетово-синий купол, усыпанный звездами, яркими, как бриллианты.</p>
+            <p>Вокруг шумел лес. Настоящий, огромный лес. Я чувствовал запах сосен и песка. Впереди, отражая звездное небо, лежало озеро.</p>
+            <p>— Добро пожаловать в преддверие, — Эрик протянул мне руку, помогая подняться. — Здесь они нас не достанут. Пока что.</p>
+            <p>Впереди, на берегу, я увидел странное сооружение — черный куб, идеально вписанный в пейзаж. Дом, что ли?</p>
+        `
     }
 ];
 
@@ -360,6 +412,58 @@ const hiddenPosts_en = [
             <p>"I'm alive," a sluggish thought broke through the fog of concussion.</p>
             <p>I tried to move, and pain pierced my whole body. The door was jammed. Crumpled metal had turned the car into a steel coffin.</p>
             <p>Through the opening of the broken window, upside down, I saw them approaching the car. Three shadows. They were no longer in a hurry. They floated above the asphalt without touching the ground, and cold emanated from them—the dead cold of deep space, from which frost began to cover the remains of the glass right before my eyes.</p>
+        `
+    },
+    {
+        id: "chapter-4-shadow",
+        title: "Chapter 4. The Second Shadow",
+        tag: "The Security Protocol",
+        date: "December 18, 2025",
+        image: "images/grok-ruins.jpg",
+        desc: "A last-minute rescue, a man with a knife, and a leap into a wall.",
+        content: `
+            <p class="first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]">
+            Blood filled my left eye, warm and sticky, mixing with the dirt on my cheek. I hung in the overturned car like an insect in a jar, watching death approach.
+            </p>
+            <p>They—now I saw them more clearly—were faceless. Where eyes and a mouth should have been, a void swirled, denser than the surrounding night. But I felt their attention. Hungry, studying attention. They didn't just want to kill me. They wanted to take what had ignited inside me a second ago.</p>
+            <p>The air around the car turned icy. My breath escaped my mouth in thick clouds of steam.</p>
+            <p>'So this is it, Mark,' flashed through my mind.</p>
+            <p>The nearest shadow raised a hand—or what served as a limb. The darkness stretched into a long, sharp blade.</p>
+            <p>And in that moment, a sound tore through the air, like the crack of a whip, only a hundred times louder.</p>
+            <p>The shadow poised to strike jerked as if hit by an invisible battering ram and was thrown back into the darkness. A hissing, grinding howl rang out—a sound no earthly creature could make.</p>
+            <p>Boots appeared in my inverted field of vision. Heavy, rough, military-grade.</p>
+            <p>Someone crouched before the broken window. I saw a face—upside down, but memorable. Hard features, a scar above the eyebrow, and eyes with not a drop of fear. Only cold, tactical calculation. He looked at me not as a human, but as valuable cargo to be extracted at any cost.</p>
+            <p>— You sure made some noise, kid, — the stranger's voice was low, calm, cutting through the ringing in my ears. — You're broadcasting to the whole district. Like a Christmas tree in the middle of a forest.</p>
+            <p>— The door... — I croaked, spitting blood. — Won't... open...</p>
+            <p>He didn't even look at the lock. The stranger braced his foot against the roof of the car (which was now the floor), grabbed the crumpled edge of the door frame with his hands, and... just pulled.</p>
+            <p>The metal creaked, groaned like a living thing. I watched in horror as steel hinges snapped with a dry crack. This man—or not a man?—tore the door off its hinges, tossing it aside like a piece of cardboard.</p>
+            <p>— Cut! — he shoved something cold and sharp into my hand. A knife.</p>
+            <p>With trembling fingers, I found the seatbelt strap and slashed it. Gravity immediately took over—I crashed down onto the roof lining, right into the glass shards.</p>
+            <p>— Get up! Move! — his hand grabbed my collar and yanked me out.</p>
+            <p>My legs gave way, but he didn't let me fall.</p>
+            <p>— They're regrouping. We have thirty seconds while they patch the structure.</p>
+            <p>I looked where the shadow had been thrown. The void there was thickening, taking a new shape.</p>
+            <p>— Who... who are you? — I exhaled.</p>
+            <p>— Eric. Questions later. Run if you want to live.</p>
+            <p>And we ran.</p>
+            <p>Running with a concussion is a special kind of torture. The world swayed, the asphalt tried to hit me in the face. Eric dragged me along, barely slowing down, choosing the darkest, narrowest passages between houses.</p>
+            <p>We weaved through courtyards, vaulted over low fences. I heard a strange sound behind us—not footsteps, but a rustle, as if thousands of dry leaves were being dragged along the ground. They were tracking the trail.</p>
+            <p>— In there! — Eric took a sharp turn into a dead end.</p>
+            <p>— There's a wall! — I shouted, trying to brake. In front of us was brickwork piled with dumpsters.</p>
+            <p>— No, Mark. That's the exit.</p>
+            <p>The one who called himself Eric didn't even slow down. He flew into the deepest shadow in the corner of the dead end and... vanished.</p>
+            <p>I froze for a split second. The rustle behind me turned into a roar. I turned around and saw the darkness at the mouth of the alley rising like a wave, preparing to engulf us.</p>
+            <p>There was no choice. I squeezed my eyes shut and stepped into the wall, right where Eric had disappeared.</p>
+            <p>The expected impact didn't follow.</p>
+            <p>The ground vanished. The smells of the city—burning, trash, exhaust—were cut off like with a knife. Instead, I was overcome by the sensation of free-falling into icy water. My stomach cramped, my insides seemingly trying to swap places. Smells of ozone, electricity, and damp earth hit my nose.</p>
+            <p>'Scar,' — a word I didn't know before floated up in my head from nowhere.</p>
+            <p>It lasted an instant but felt like an eternity. I was spat out onto a hard surface. I fell to my knees, greedily gasping for air, trying to suppress the nausea.</p>
+            <p>— Breathe, — Eric's voice sounded right next to me. — It's always like this the first time.</p>
+            <p>I opened my eyes. And forgot how to breathe.</p>
+            <p>Above me wasn't the narrow strip of urban sky clamped between high-rises. Above me stretched an endless, violet-blue dome scattered with stars as bright as diamonds.</p>
+            <p>A forest rustled around us. A real, immense forest. I smelled pine and sand. Ahead, reflecting the starry sky, lay a lake.</p>
+            <p>— Welcome to the Threshold, — Eric offered me a hand, helping me up. — They won't reach us here. For now.</p>
+            <p>Ahead, on the shore, I saw a strange structure—a black cube perfectly fitted into the landscape. A house, I suppose.</p>
         `
     }
 ];
