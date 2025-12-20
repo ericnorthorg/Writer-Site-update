@@ -120,7 +120,21 @@
                         <svg class="w-6 h-6 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                     </button>
                     <button onclick="toggleLanguage()" class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-200 dark:border-slate-700 rounded px-2 py-1" id="lang-btn-mobile">RU</button>
+                    <button type="button" onclick="toggleMenu()" class="bg-white dark:bg-slate-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
                 </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800 absolute w-full shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800" data-lang-key="nav_index">Главная</a>
+                <a href="blog.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 dark:text-emerald-400" data-lang-key="nav_blog">Истории</a>
+                <a href="books.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800" data-lang-key="nav_books">Книги</a>
+                <a href="announcements.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800" data-lang-key="nav_notes">Заметки</a>
             </div>
         </div>
     </header>
@@ -246,6 +260,7 @@
         document.querySelectorAll('[data-lang-key]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-lang-key')]);
         
         function toggleLanguage() { localStorage.setItem('site_lang', lang === 'ru' ? 'en' : 'ru'); location.reload(); }
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
 
         const params = new URLSearchParams(window.location.search);
         const postId = params.get('id');
