@@ -219,7 +219,7 @@
                 nav_index: "Главная", 
                 nav_blog: "Истории", 
                 nav_books: "Книги",
-                nav_notes: "Заметки", // Исправлено (было nav_announcements)
+                nav_notes: "Заметки",
                 btn_subscribe: "Подписаться",
                 share_txt: "Поделиться историей",
                 toast_copied: "Ссылка скопирована!",
@@ -232,7 +232,7 @@
                 nav_index: "Home", 
                 nav_blog: "Stories", 
                 nav_books: "Books",
-                nav_notes: "Notes", // Исправлено
+                nav_notes: "Notes",
                 btn_subscribe: "Subscribe",
                 share_txt: "Share this story",
                 toast_copied: "Link copied to clipboard!",
@@ -253,7 +253,6 @@
 
         // Основная функция загрузки
         async function loadAndFindPost() {
-            // Текст загрузки удален, чтобы не мерцал
             try {
                 // Загружаем только БЛОГ (публичные записи)
                 let allPosts = await loadGoogleSheet('blog');
@@ -291,13 +290,10 @@
         
         // Рекомендательная система (только для блога)
         function showRelatedPosts(currentPost, allPosts) {
-            // Находим статьи с тем же тегом, исключая текущую
             const related = allPosts.filter(p => p.tag === currentPost.tag && p.id !== currentPost.id);
             
             if (related.length > 0) {
-                // Берем первые 2 (или можно перемешать)
                 const toShow = related.slice(0, 2);
-                
                 const container = document.getElementById('related-posts-container');
                 const grid = document.getElementById('related-grid');
                 
@@ -347,7 +343,6 @@
             query = query.toLowerCase(); let matches = [];
             loadGoogleSheet('blog').then(posts => {
                 posts.forEach(post => { if (post.title.toLowerCase().includes(query) || post.desc.toLowerCase().includes(query)) matches.push({ type: 'История', title: post.title, desc: post.desc, link: `post.html?id=${post.id}`, color: 'text-emerald-600' }); });
-                // Примечание: Поиск всё еще ищет везде, но это нормально для глобального поиска. Если нужно ограничить и его - скажите.
                 loadGoogleSheet('books').then(books => {
                     books.forEach(book => { if (book.title.toLowerCase().includes(query) || book.desc.toLowerCase().includes(query)) matches.push({ type: 'Книга', title: book.title, desc: book.desc, link: book.link || 'books.html', color: 'text-indigo-600' }); });
                     loadGoogleSheet('notes').then(notes => {
