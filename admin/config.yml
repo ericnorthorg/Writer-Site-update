@@ -9,59 +9,12 @@ locale: 'ru'
 display_url: "https://ericnorth.netlify.app"
 
 collections:
-  - name: "data"
-    label: "Управление контентом"
+  # === РУССКИЙ РАЗДЕЛ ===
+  - name: "data_ru"
+    label: "🇷🇺 Управление (RU)"
     files:
-      - name: "home"
-        label: "🏠 Главная страница"
-        file: "home.json"
-        fields:
-          - name: "posts"
-            label: "Блоки страницы"
-            widget: "list"
-            types:
-              - name: "hero"
-                label: "Первый экран (Hero)"
-                widget: "object"
-                fields:
-                  - {label: "Тип", name: "type", widget: "hidden", default: "hero"}
-                  - {label: "Заголовок", name: "title", widget: "string"}
-                  - {label: "Текст", name: "text", widget: "text"}
-                  - {label: "Метка сверху", name: "label", widget: "string", required: false}
-                  - {label: "Код (эффект)", name: "codeSnippet", widget: "text", required: false}
-                  - name: "buttons"
-                    label: "Кнопки"
-                    widget: "list"
-                    fields:
-                      - {label: "Текст", name: "text", widget: "string"}
-                      - {label: "Ссылка", name: "link", widget: "string"}
-                      - {label: "Стиль", name: "style", widget: "select", options: ["dark", "green", "outline"]}
-
-              - name: "text_media"
-                label: "Текст + Картинка"
-                widget: "object"
-                fields:
-                  - {label: "Тип", name: "type", widget: "hidden", default: "text_media"}
-                  - {label: "Заголовок", name: "title", widget: "string"}
-                  - {label: "Текст", name: "text", widget: "markdown"}
-                  - {label: "Картинка", name: "image", widget: "image"}
-                  - {label: "Расположение картинки", name: "layout", widget: "select", options: ["left", "right"]}
-
-              - name: "features"
-                label: "Три колонки (Особенности)"
-                widget: "object"
-                fields:
-                  - {label: "Тип", name: "type", widget: "hidden", default: "features"}
-                  - {label: "Заголовок секции", name: "title", widget: "string"}
-                  - name: "items"
-                    label: "Карточки"
-                    widget: "list"
-                    fields:
-                      - {label: "Заголовок", name: "title", widget: "string"}
-                      - {label: "Описание", name: "desc", widget: "text"}
-
       - name: "blog"
-        label: "📝 Блог (Истории)"
+        label: "📝 Блог (RU)"
         file: "blog.json"
         fields:
           - name: "posts"
@@ -70,46 +23,15 @@ collections:
             fields:
               - {label: "ID", name: "id", widget: "string"}
               - {label: "Заголовок", name: "title", widget: "string"}
-              - {label: "Главный (Featured)", name: "featured", widget: "boolean", default: false, required: false}
+              - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
               - {label: "Тег", name: "tag", widget: "string"}
               - {label: "Дата", name: "date", widget: "string"}
               - {label: "Обложка", name: "image", widget: "image", required: false}
               - {label: "Описание", name: "desc", widget: "text"}
               - {label: "Текст", name: "content", widget: "markdown"}
 
-      - name: "books"
-        label: "📚 Книги"
-        file: "books.json"
-        fields:
-          - name: "posts"
-            label: "Книги"
-            widget: "list"
-            fields:
-              - {label: "Название", name: "title", widget: "string"}
-              - {label: "Жанр/Статус", name: "genre", widget: "string"}
-              - {label: "Описание", name: "desc", widget: "text"}
-              - {label: "Цена / Надпись", name: "price", widget: "string"}
-              - {label: "Тег (на карточке)", name: "tag", widget: "string"}
-              - {label: "Ссылка кнопки", name: "link", widget: "string", hint: "Например: hidden.html или post.html?id=xyz"}
-              - {label: "Цвет фона", name: "color", widget: "select", options: ["bg-slate-800", "bg-emerald-800", "bg-stone-600", "bg-indigo-900"]}
-
-      - name: "notes"
-        label: "🧠 Заметки (Timeline)"
-        file: "notes.json"
-        fields:
-          - name: "posts"
-            label: "Заметки"
-            widget: "list"
-            fields:
-              - {label: "Заголовок", name: "title", widget: "string"}
-              - {label: "Дата (YYYY-MM-DD)", name: "date", widget: "string"}
-              - {label: "Тип", name: "type", widget: "select", options: ["progress", "brain", "image", "text"]}
-              - {label: "Прогресс (%)", name: "percent", widget: "number", required: false, value_type: "int"}
-              - {label: "Картинка", name: "image", widget: "image", required: false}
-              - {label: "Текст", name: "desc", widget: "text"}
-
       - name: "hidden"
-        label: "🔒 Секретный раздел"
+        label: "🔒 Секретный раздел (RU)"
         file: "hidden.json"
         fields:
           - name: "posts"
@@ -118,8 +40,121 @@ collections:
             fields:
               - {label: "ID", name: "id", widget: "string"}
               - {label: "Название", name: "title", widget: "string"}
-              - {label: "Тег (Книга)", name: "tag", widget: "string", default: "Протокол Безопасности"}
+              - {label: "Тег", name: "tag", widget: "string", default: "Протокол Безопасности"}
               - {label: "Дата", name: "date", widget: "string"}
               - {label: "Обложка", name: "image", widget: "image", required: false}
+              - {label: "Текст", name: "content", widget: "markdown"}
+
+      - name: "books"
+        label: "📚 Книги (RU)"
+        file: "books.json"
+        fields:
+          - name: "posts"
+            label: "Книги"
+            widget: "list"
+            fields:
+              - {label: "Название", name: "title", widget: "string"}
+              - {label: "Жанр", name: "genre", widget: "string"}
               - {label: "Описание", name: "desc", widget: "text"}
-              - {label: "Текст главы", name: "content", widget: "markdown"}
+              - {label: "Цена", name: "price", widget: "string"}
+              - {label: "Тег", name: "tag", widget: "string"}
+              - {label: "Ссылка", name: "link", widget: "string"}
+              - {label: "Цвет", name: "color", widget: "string"}
+
+      - name: "home"
+        label: "🏠 Главная (RU)"
+        file: "home.json"
+        fields:
+          - name: "posts"
+            label: "Блоки"
+            widget: "list"
+            types:
+              - name: "hero"
+                label: "Hero"
+                widget: "object"
+                fields:
+                  - {label: "Тип", name: "type", widget: "hidden", default: "hero"}
+                  - {label: "Заголовок", name: "title", widget: "string"}
+                  - {label: "Текст", name: "text", widget: "text"}
+                  - name: "buttons"
+                    label: "Кнопки"
+                    widget: "list"
+                    fields:
+                      - {label: "Текст", name: "text", widget: "string"}
+                      - {label: "Ссылка", name: "link", widget: "string"}
+                      - {label: "Стиль", name: "style", widget: "string"}
+
+  # === АНГЛИЙСКИЙ РАЗДЕЛ ===
+  - name: "data_en"
+    label: "🇺🇸 Content (EN)"
+    files:
+      - name: "blog_en"
+        label: "📝 Blog (EN)"
+        file: "blog_en.json"
+        fields:
+          - name: "posts"
+            label: "Posts"
+            widget: "list"
+            fields:
+              - {label: "ID (Must match RU ID)", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+              - {label: "Tag", name: "tag", widget: "string"}
+              - {label: "Date", name: "date", widget: "string"}
+              - {label: "Image", name: "image", widget: "image", required: false}
+              - {label: "Description", name: "desc", widget: "text"}
+              - {label: "Content", name: "content", widget: "markdown"}
+
+      - name: "hidden_en"
+        label: "🔒 Hidden Protocol (EN)"
+        file: "hidden_en.json"
+        fields:
+          - name: "posts"
+            label: "Chapters"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Tag", name: "tag", widget: "string", default: "The Security Protocol"}
+              - {label: "Date", name: "date", widget: "string"}
+              - {label: "Image", name: "image", widget: "image", required: false}
+              - {label: "Content", name: "content", widget: "markdown"}
+
+      - name: "books_en"
+        label: "📚 Books (EN)"
+        file: "books_en.json"
+        fields:
+          - name: "posts"
+            label: "Books"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Genre", name: "genre", widget: "string"}
+              - {label: "Description", name: "desc", widget: "text"}
+              - {label: "Price", name: "price", widget: "string"}
+              - {label: "Tag", name: "tag", widget: "string"}
+              - {label: "Link", name: "link", widget: "string"}
+              - {label: "Color", name: "color", widget: "string"}
+
+      - name: "home_en"
+        label: "🏠 Home Page (EN)"
+        file: "home_en.json"
+        fields:
+          - name: "posts"
+            label: "Blocks"
+            widget: "list"
+            types:
+              - name: "hero"
+                label: "Hero Block"
+                widget: "object"
+                fields:
+                  - {label: "Type", name: "type", widget: "hidden", default: "hero"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Text", name: "text", widget: "text"}
+                  - name: "buttons"
+                    label: "Buttons"
+                    widget: "list"
+                    fields:
+                      - {label: "Text", name: "text", widget: "string"}
+                      - {label: "Link", name: "link", widget: "string"}
+                      - {label: "Style", name: "style", widget: "string"}
