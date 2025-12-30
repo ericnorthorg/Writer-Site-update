@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "type": "hero",
+      "title": "Reality is just a draft.",
+      "text": "Welcome to Eric North's digital archive. Chronicles of worlds that could exist if we hadn't fixed the universe's bugs in time.",
+      "label": "System Online",
+      "buttons": [
+        {"text": "Start Reading", "link": "blog.html", "style": "dark"},
+        {"text": "Restricted Area", "link": "hidden.html", "style": "green"}
+      ],
+      "codeSnippet": "Protocol: SECURE\nStatus: UNSTABLE\nTrace: DETECTED..."
+    },
+    {
+      "type": "features",
+      "title": "Explore the Archives",
+      "items": [
+        {"title": "Stories", "desc": "Short stories and philosophical essays."},
+        {"title": "Books", "desc": "Full novels and cycles."},
+        {"title": "Notes", "desc": "Stream of consciousness and drafts."}
+      ]
+    }
+  ]
+}

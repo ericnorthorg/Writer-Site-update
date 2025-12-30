@@ -7,43 +7,44 @@ function getLanguage() {
 async function loadGoogleSheet(type) {
     const lang = getLanguage(); // 'ru' или 'en'
 
-    // Список всех разделов, которые теперь управляются через JSON/Админку
+    // Список всех разделов, которые управляются через JSON/Админку
     const jsonSections = ['blog', 'books', 'notes', 'home', 'hidden'];
 
     if (jsonSections.includes(type)) {
         try {
-            // === ВОТ ЗДЕСЬ МАГИЯ ===
-            // Если язык английский, ищем файл с приставкой _en (например, blog_en.json)
-            // Если русский — берем обычный (blog.json)
+            // 1. Определяем имя файла в зависимости от языка
+            // Если язык английский — ищем *_en.json, если русский — *.json
             let fileName = (lang === 'en') ? `${type}_en.json` : `${type}.json`;
             
             const response = await fetch(fileName);
             
-            // Если английского файла пока нет (ошибка 404), пробуем загрузить русский как запасной вариант
+            // 2. Если файл не найден (например, английский еще не создан), 
+            // делаем "Fallback" — загружаем русскую версию, чтобы сайт не был пустым.
             if (!response.ok) {
-                console.warn(`File ${fileName} not found, falling back to RU.`);
+                console.warn(`File ${fileName} not found, falling back to default (RU).`);
                 fileName = `${type}.json`;
                 
                 const fallback = await fetch(fileName);
-                if (!fallback.ok) throw new Error("File not found");
+                if (!fallback.ok) throw new Error(`Critical: File ${fileName} not found`);
                 
                 const data = await fallback.json();
                 return data.posts || data;
             }
             
+            // 3. Если файл найден — отдаем данные
             const data = await response.json();
-            // Админка сохраняет посты внутри { posts: [...] }, но старые файлы могут быть плоскими
-            // Эта строка универсальна: если есть поле posts - берем его, иначе берем всё
+            // Админка сохраняет данные внутри объекта { "posts": [...] }
+            // Мы проверяем: если есть обертка posts, берем массив внутри. Если нет — берем как есть.
             return data.posts || data;
 
         } catch (err) {
-            console.error(`Ошибка загрузки ${type}:`, err);
-            return [];
+            console.error(`Ошибка загрузки раздела ${type}:`, err);
+            return []; // Возвращаем пустой массив, чтобы верстка не "поехала"
         }
     }
 
     return [];
 }
 
-// Эта функция больше не используется для JSON-данных, но оставим пустой, чтобы не ломать старые вызовы, если они есть
+// Вспомогательная функция (оставляем для совместимости, если где-то остался старый вызов)
 function mapHomeData(rows) { return rows; }

@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "title": "The Security Protocol",
+      "genre": "Fantasy / WIP",
+      "desc": "Flagship project. The ancient containment mechanism is broken. Eric and Mark must restart it before reality collapses.",
+      "price": "W.I.P.",
+      "color": "bg-slate-800",
+      "tag": "Writing",
+      "link": "hidden.html"
+    }
+  ]
+}
