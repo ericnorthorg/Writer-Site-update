@@ -28,3 +28,19 @@ collections:
               - {label: "Обложка", name: "image", widget: "image", required: false}
               - {label: "Описание", name: "desc", widget: "text"}
               - {label: "Текст", name: "content", widget: "markdown"}
+      
+      - name: "hidden"
+        label: "Секретный раздел (Книги)"
+        file: "hidden.json"
+        fields:
+          - name: "posts"
+            label: "Главы"
+            widget: "list"
+            fields:
+              - {label: "ID (chapter-1)", name: "id", widget: "string"}
+              - {label: "Название главы", name: "title", widget: "string"}
+              - {label: "Книга (Тег)", name: "tag", widget: "string", default: "Протокол Безопасности"}
+              - {label: "Дата", name: "date", widget: "string"}
+              - {label: "Обложка", name: "image", widget: "image", required: false}
+              - {label: "Краткое описание", name: "desc", widget: "text"}
+              - {label: "Текст главы", name: "content", widget: "markdown"}
