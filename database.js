@@ -38,6 +38,24 @@ async function loadGoogleSheet(type) {
             }
         }
 
+        // --- НОВАЯ ЛОГИКА ДЛЯ HIDDEN (Секретный раздел) ---
+        if (type === 'hidden') {
+            try {
+                // Если язык английский, в будущем создашь hidden_en.json
+                // Пока грузим русскую версию для админки
+                const fileName = 'hidden.json'; 
+                
+                const response = await fetch(fileName);
+                if (!response.ok) throw new Error('Failed load hidden');
+                
+                const data = await response.json();
+                return data.posts || data;
+            } catch (err) {
+                console.error("Ошибка hidden:", err);
+                return [];
+            }
+        }
+
         // --- СТАРАЯ ЛОГИКА ДЛЯ ОСТАЛЬНЫХ РАЗДЕЛОВ (Из JS переменных) ---
         // Эти данные пока редактируются через код (файлы data_*.js)
         
@@ -55,16 +73,11 @@ async function loadGoogleSheet(type) {
             if (typeof notes_ru === 'undefined') throw new Error("Ошибка: Файл 'data_notes.js' не подключен!");
             return (lang === 'en') ? notes_en : notes_ru;
         }
-        
-        if (type === 'hidden') {
-            if (typeof hiddenPosts_ru === 'undefined') throw new Error("Ошибка: Файл 'data_hidden.js' не подключен!");
-            return (lang === 'en') ? hiddenPosts_en : hiddenPosts_ru;
-        }
 
     } catch (error) {
-        // Выводим ошибку в консоль и пользователю (кроме блога, там обработка выше)
+        // Выводим ошибку в консоль и пользователю (кроме блога и hidden, там обработка выше)
         console.error(error);
-        if (type !== 'blog') {
+        if (type !== 'blog' && type !== 'hidden') {
             alert(`⛔️ ПРОБЛЕМА НА САЙТЕ:\n${error.message}\n\nПроверьте подключение файлов data_*.js`);
         }
         return [];
