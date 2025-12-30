@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": "chapter-1-raw",
+      "title": "Глава 1. Диссонанс",
+      "tag": "Протокол Безопасности",
+      "date": "12 Декабря 2025",
+      "image": "images/grok-ruins.jpg",
+      "desc": "Первая глава. Ошибка рендеринга реальности, кофе и сбой в системе.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Будильник не звонил. Он вспарывал тишину, как скальпель — нарыв...</p>"
+    },
+    {
+      "id": "chapter-2-parity",
+      "title": "Глава 2. Ошибка четности",
+      "tag": "Протокол Безопасности",
+      "date": "14 Декабря 2025",
+      "image": "images/grok-ruins.jpg",
+      "desc": "Реальность продолжает сбоить. Исчезнувшие файлы, странные наблюдатели и кружка, которая стоит не так.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>На следующий день я пришел в офис раньше обычного...</p>"
+    },
+    {
+      "id": "chapter-3-constants",
+      "title": "Глава 3. Нарушение констант",
+      "tag": "Протокол Безопасности",
+      "date": "16 Декабря 2025",
+      "image": "images/grok-ruins.jpg",
+      "desc": "Побег из зоны покрытия, тени в зеркале заднего вида и физика, которая вышла из чата.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Я не помню, как именно мои пальцы сомкнулись на ключах зажигания...</p>"
+    },
+    {
+      "id": "chapter-4-shadow",
+      "title": "Глава 4. Вторая тень",
+      "tag": "Протокол Безопасности",
+      "date": "18 Декабря 2025",
+      "image": "images/grok-ruins.jpg",
+      "desc": "Спасение в последний момент, человек с ножом и прыжок в стену.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Кровь заливала мне левый глаз, теплая и липкая...</p>"
+    }
+  ]
+}

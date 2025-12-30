@@ -1,90 +1,49 @@
-// === УМНАЯ ФУНКЦИЯ ЗАГРУЗКИ ===
+// === УНИВЕРСАЛЬНАЯ БАЗА ДАННЫХ (JSON + CMS + MULTILANGUAGE) ===
 
 function getLanguage() {
     return localStorage.getItem('site_lang') || 'ru';
 }
 
 async function loadGoogleSheet(type) {
-    // Убрали искусственную задержку (setTimeout), чтобы грузилось максимально быстро
     const lang = getLanguage(); // 'ru' или 'en'
 
-    try {
-        // --- НОВАЯ ЛОГИКА ДЛЯ БЛОГА (Загрузка из JSON для работы CMS) ---
-        if (type === 'blog') {
-            try {
-                // Если язык английский, можно сделать отдельный файл blog_en.json
-                // Пока используем один файл:
-                const fileName = 'blog.json'; 
-                
-                // Когда будет готов перевод, можно раскомментировать:
-                // const fileName = (lang === 'en') ? 'blog_en.json' : 'blog.json';
+    // Список всех разделов, которые теперь управляются через JSON/Админку
+    const jsonSections = ['blog', 'books', 'notes', 'home', 'hidden'];
 
-                const response = await fetch(fileName);
+    if (jsonSections.includes(type)) {
+        try {
+            // === ВОТ ЗДЕСЬ МАГИЯ ===
+            // Если язык английский, ищем файл с приставкой _en (например, blog_en.json)
+            // Если русский — берем обычный (blog.json)
+            let fileName = (lang === 'en') ? `${type}_en.json` : `${type}.json`;
+            
+            const response = await fetch(fileName);
+            
+            // Если английского файла пока нет (ошибка 404), пробуем загрузить русский как запасной вариант
+            if (!response.ok) {
+                console.warn(`File ${fileName} not found, falling back to RU.`);
+                fileName = `${type}.json`;
                 
-                if (!response.ok) {
-                    throw new Error(`Не удалось загрузить ${fileName}: ${response.status}`);
-                }
+                const fallback = await fetch(fileName);
+                if (!fallback.ok) throw new Error("File not found");
                 
-                const data = await response.json();
-                
-                // ВАЖНОЕ ОБНОВЛЕНИЕ ДЛЯ АДМИНКИ:
-                // Decap CMS сохраняет данные в структуре { "posts": [ ... ] }
-                // Мы проверяем: если есть поле "posts", берем его. Если нет — берем весь объект (для совместимости).
+                const data = await fallback.json();
                 return data.posts || data;
-
-            } catch (err) {
-                console.error("Ошибка при чтении блога:", err);
-                return []; // Возвращаем пустой список, чтобы сайт не сломался
             }
-        }
+            
+            const data = await response.json();
+            // Админка сохраняет посты внутри { posts: [...] }, но старые файлы могут быть плоскими
+            // Эта строка универсальна: если есть поле posts - берем его, иначе берем всё
+            return data.posts || data;
 
-        // --- НОВАЯ ЛОГИКА ДЛЯ HIDDEN (Секретный раздел) ---
-        if (type === 'hidden') {
-            try {
-                // Если язык английский, в будущем создашь hidden_en.json
-                // Пока грузим русскую версию для админки
-                const fileName = 'hidden.json'; 
-                
-                const response = await fetch(fileName);
-                if (!response.ok) throw new Error('Failed load hidden');
-                
-                const data = await response.json();
-                return data.posts || data;
-            } catch (err) {
-                console.error("Ошибка hidden:", err);
-                return [];
-            }
+        } catch (err) {
+            console.error(`Ошибка загрузки ${type}:`, err);
+            return [];
         }
-
-        // --- СТАРАЯ ЛОГИКА ДЛЯ ОСТАЛЬНЫХ РАЗДЕЛОВ (Из JS переменных) ---
-        // Эти данные пока редактируются через код (файлы data_*.js)
-        
-        if (type === 'home') {
-            if (typeof indexData_ru === 'undefined') throw new Error("Ошибка: Файл 'data_home.js' не подключен!");
-            return (lang === 'en') ? indexData_en : indexData_ru;
-        }
-        
-        if (type === 'books') {
-            if (typeof myBooks_ru === 'undefined') throw new Error("Ошибка: Файл 'data_books.js' не подключен!");
-            return (lang === 'en') ? myBooks_en : myBooks_ru;
-        }
-        
-        if (type === 'notes') {
-            if (typeof notes_ru === 'undefined') throw new Error("Ошибка: Файл 'data_notes.js' не подключен!");
-            return (lang === 'en') ? notes_en : notes_ru;
-        }
-
-    } catch (error) {
-        // Выводим ошибку в консоль и пользователю (кроме блога и hidden, там обработка выше)
-        console.error(error);
-        if (type !== 'blog' && type !== 'hidden') {
-            alert(`⛔️ ПРОБЛЕМА НА САЙТЕ:\n${error.message}\n\nПроверьте подключение файлов data_*.js`);
-        }
-        return [];
     }
-    
+
     return [];
 }
 
-// Вспомогательная функция
+// Эта функция больше не используется для JSON-данных, но оставим пустой, чтобы не ломать старые вызовы, если они есть
 function mapHomeData(rows) { return rows; }

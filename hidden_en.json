@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": "chapter-1-raw",
+      "title": "Chapter 1. Dissonance",
+      "tag": "The Security Protocol",
+      "date": "December 12, 2025",
+      "image": "images/grok-ruins.jpg",
+      "desc": "Chapter 1. A reality rendering error, coffee, and a glitch in the system.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>The alarm didn’t ring. It slashed through the silence like a scalpel through an abscess...</p>"
+    },
+    {
+      "id": "chapter-4-shadow",
+      "title": "Chapter 4. The Second Shadow",
+      "tag": "The Security Protocol",
+      "date": "December 18, 2025",
+      "image": "images/grok-ruins.jpg",
+      "desc": "A last-minute rescue, a man with a knife, and a leap into a wall.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Blood filled my left eye, warm and sticky, mixing with the dirt on my cheek...</p>"
+    }
+  ]
+}

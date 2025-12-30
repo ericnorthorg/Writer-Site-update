@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": "post-immortality",
+      "title": "The Curse of Eternity: Why Death is a Feature",
+      "tag": "Philosophy",
+      "featured": true,
+      "date": "December 20, 2025",
+      "image": "images/soul-disconnection.jpg",
+      "desc": "We dream of uploading consciousness to the cloud. But we forget that without a deadline, any project turns into endless procrastination.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Humanity is obsessed with immortality...</p>"
+    },
+    {
+      "id": "post-destiny",
+      "title": "Your Destiny: An Error in the Algorithm",
+      "tag": "Cyberpunk",
+      "featured": false,
+      "date": "December 18, 2025",
+      "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "desc": "Corporations predict your purchases, and prophets predict your fate. But what if free will is the ability to do something illogical?",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Have you noticed how convenient life has become? Playlists are tailored to your mood...</p>"
+    },
+    {
+      "id": "post-irony-magic",
+      "title": "Laughter Over the Abyss: Irony as Defense",
+      "tag": "Psychology",
+      "featured": false,
+      "date": "December 15, 2025",
+      "image": "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "desc": "Why are the strongest mages always a bit crazy jokers? Seriousness makes you vulnerable, while laughter makes you unkillable.",
+      "content": "<p class='first-letter:text-6xl first-letter:font-bold first-letter:text-emerald-900 first-letter:float-left first-letter:mr-3 first-letter:mt-[-10px]'>Have you noticed that villains in books are always pompous? They deliver long monologues...</p>"
+    }
+  ]
+}
